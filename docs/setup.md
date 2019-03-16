@@ -33,3 +33,20 @@ When updates are made, you can pull them as follows (note that you should first 
 ```bash
 $ git pull upstream master
 ```
+
+## Visual Studio
+
+* Use `midi.sln` solution file to open the project in Visual Studio.
+* Select "Show All Files" in the Solution Explorer so as to view the folder structure.
+* Notice the three builds available: Debug, Release and Testing.
+  * To run the tests, select the Testing build.
+  * To run your own `main` function, select either Debug or Release. During development, you'll probably want to use the former.
+
+## Manual Configuration
+
+This section is meant for those not using Visual Studio.
+Make the following configuration settings:
+
+* Add `.` as include directory and compile from within the `src/midi` folder. This makes it easier to specify `#include` paths: they all start from the root of the project.
+  AFAIK, setting `.` as include directory is done using the `-I` option. E.g., `gcc -I. [other stuff]`.
+* In order to run the tests, define the `TEST_BUILD` macro. AFAIK, this can be achieved using the `-D` option: `gcc -DTEST_BUILD [other stuff]`.
