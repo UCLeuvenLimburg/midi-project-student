@@ -5,3 +5,4 @@
   * [Endianness](endianness.md)
   * [Variable Length Integers](variable-length-integers.md)
 * [Strong Typedefs](strong-typedefs.md)
+* [Debugger Visualizers](debugger-visualizers.md)
