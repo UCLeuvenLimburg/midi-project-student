@@ -6,4 +6,5 @@ number's only purposes is to be able
 to make the distinction between instruments.
 An instrument having higher or lower id is meaningless.
 
-Introduce a new type `Instrument`.
+Introduce a new type `Instrument` with support
+for `==`, `!=` and `<<`.
