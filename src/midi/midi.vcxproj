@@ -212,6 +212,7 @@
     <ClInclude Include="imaging\bmp-format.h" />
     <ClInclude Include="imaging\color.h" />
     <ClInclude Include="logging.h" />
+    <ClInclude Include="shell\command-line-parser.h" />
     <ClInclude Include="util\array.h" />
     <ClInclude Include="util\grid.h" />
     <ClInclude Include="util\position.h" />
@@ -224,6 +225,7 @@
     <ClCompile Include="imaging\bmp-format.cpp" />
     <ClCompile Include="imaging\color.cpp" />
     <ClCompile Include="logging.cpp" />
+    <ClCompile Include="shell\command-line-parser.cpp" />
     <ClCompile Include="tests\tests.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
