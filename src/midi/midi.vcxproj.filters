@@ -48,6 +48,12 @@
     <ClInclude Include="shell\command-line-parser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="util\check-size.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\tests-util.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="app.cpp">
