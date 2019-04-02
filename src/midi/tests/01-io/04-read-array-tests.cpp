@@ -20,7 +20,7 @@
             std::unique_ptr<type[]> result = io::read_array<type>(ss, exp.size()); \
                                                                                    \
             for ( unsigned i = 0; i != exp.size(); ++i )                           \
-                CHECK(result[i] == exp[i]);                                        \
+                CATCH_CHECK(result[i] == exp[i]);                                  \
         }
 
 
