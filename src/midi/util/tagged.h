@@ -65,4 +65,32 @@ struct ordered : equality<T>
     }
 };
 
+template<typename T, typename CONVERT_TO>
+struct show_value_helper
+{
+    std::ostream& print(std::ostream& out, const T& x)
+    {
+        return out << CONVERT_TO(value(x));
+    }
+};
+
+template<typename T>
+struct show_value_helper<T, void>
+{
+    std::ostream& print(std::ostream& out, const T& x)
+    {
+        using CONVERT_TO = typename T::inner_type;
+        return out << CONVERT_TO(value(x));
+    }
+};
+
+template<typename T, typename CONVERT_TO = void>
+struct show_value
+{
+    friend std::ostream& operator <<(std::ostream& out, const T& x)
+    {
+        return show_value_helper<T, CONVERT_TO>().print(out, x);
+    }
+};
+
 #endif
