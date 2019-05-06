@@ -90,11 +90,11 @@ should produce one note:
 
 | Field | Value |
 |-:|:-|
-| `note_number` | 70 |
+| `note_number` | 44 |
 | `instrument` | 0 |
 | `start` | 0 |
 | `duration` | 200 |
-| `velocity` | 77 |
+| `velocity` | 70 |
 
 </center>
 
