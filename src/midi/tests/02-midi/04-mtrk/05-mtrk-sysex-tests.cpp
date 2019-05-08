@@ -69,4 +69,46 @@ TEST_CASE("Reading MTrk with sysex event at dt = 0b1111'1111")
     receiver->check_finished();
 }
 
+TEST_CASE(R"(Reading MTrk with sysex event with VLI length == 2)")
+{
+    char buffer[] = {
+        MTRK,
+        0x00, 0x00, 0x00, 8, // Length
+        0, char(0xF0), char(0b1000'0000), 0, // Sysex
+        END_OF_TRACK
+    };
+    std::string data(buffer, sizeof(buffer));
+    std::stringstream ss(data);
+
+    std::string sysex_data = "";
+    auto receiver = Builder()
+        .sysex(midi::Duration(0), sysex_data)
+        .meta(midi::Duration(0), 0x2F, "")
+        .build();
+
+    read_mtrk(ss, *receiver);
+    receiver->check_finished();
+}
+
+TEST_CASE(R"(Reading MTrk with sysex event with VLI length == 3)")
+{
+    char buffer[] = {
+        MTRK,
+        0x00, 0x00, 0x00, 10, // Length
+        0, char(0xF0), char(0b1000'0000), char(0b1000'0000), 1, 'q', // Sysex
+        END_OF_TRACK
+    };
+    std::string data(buffer, sizeof(buffer));
+    std::stringstream ss(data);
+
+    std::string sysex_data = "q";
+    auto receiver = Builder()
+        .sysex(midi::Duration(0), sysex_data)
+        .meta(midi::Duration(0), 0x2F, "")
+        .build();
+
+    read_mtrk(ss, *receiver);
+    receiver->check_finished();
+}
+
 #endif

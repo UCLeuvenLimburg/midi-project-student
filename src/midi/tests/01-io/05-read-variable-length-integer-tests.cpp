@@ -107,4 +107,24 @@ TEST_CASE("Reading variable sized integer from { 0b00000111, 0b10010001, 0b11010
     CATCH_CHECK(actual == 0b0000111);
 }
 
+TEST_CASE("Reading variable sized integer from { 0b10000111, 0b10010001, 0b11010101, 0b01111111, 0 }")
+{
+    char buffer[] = { char(0b1000'0111), char(0b100'10001), char(0b1101'0101), char(0b0111'1111), 0 };
+    std::string data(buffer, sizeof(buffer));
+    std::stringstream ss(data);
+    auto actual = io::read_variable_length_integer(ss);
+
+    CATCH_CHECK(actual == 0b0000111'0010001'1010101'1111111);
+}
+
+TEST_CASE("Reading variable sized integer from { 0b11111111, 0b10000000, 0b10000000, 0b10001100, 0b00000010 }")
+{
+    char buffer[] = { char(0b11111111), char(0b10000000), char(0b10000000), char(0b10001100), char(0b00000010) };
+    std::string data(buffer, sizeof(buffer));
+    std::stringstream ss(data);
+    auto actual = io::read_variable_length_integer(ss);
+
+    CATCH_CHECK(actual == 0b1111111'0000000'0000000'0001100'0000010);
+}
+
 #endif

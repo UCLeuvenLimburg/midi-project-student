@@ -174,4 +174,46 @@ TEST_CASE("Reading MTrk with three meta events")
     receiver->check_finished();
 }
 
+TEST_CASE(R"(Reading MTrk with single meta event with data length 128; checks that length is read as VLI)")
+{
+    char buffer[] = {
+        MTRK,
+        0x00, 0x00, 0x00, char(137), // Length
+        0, char(0xFF), char(0x01), char(0b1000'0001), 0, '1', '2', '3', '4', '5', '6', '7', '8', '1', '2', '3', '4', '5', '6', '7', '8','1', '2', '3', '4', '5', '6', '7', '8', '1', '2', '3', '4', '5', '6', '7', '8','1', '2', '3', '4', '5', '6', '7', '8', '1', '2', '3', '4', '5', '6', '7', '8','1', '2', '3', '4', '5', '6', '7', '8', '1', '2', '3', '4', '5', '6', '7', '8','1', '2', '3', '4', '5', '6', '7', '8', '1', '2', '3', '4', '5', '6', '7', '8','1', '2', '3', '4', '5', '6', '7', '8', '1', '2', '3', '4', '5', '6', '7', '8','1', '2', '3', '4', '5', '6', '7', '8', '1', '2', '3', '4', '5', '6', '7', '8','1', '2', '3', '4', '5', '6', '7', '8', '1', '2', '3', '4', '5', '6', '7', '8',
+        END_OF_TRACK
+    };
+    std::string data(buffer, sizeof(buffer));
+    std::stringstream ss(data);
+
+    std::string metadata = "12345678123456781234567812345678123456781234567812345678123456781234567812345678123456781234567812345678123456781234567812345678";
+    auto receiver = Builder()
+        .meta(midi::Duration(0), 0x01, metadata)
+        .meta(midi::Duration(0), 0x2F, "")
+        .build();
+
+    read_mtrk(ss, *receiver);
+    receiver->check_finished();
+}
+
+TEST_CASE(R"(Reading MTrk with single meta event, VLI length == 3)")
+{
+    char buffer[] = {
+        MTRK,
+        0x00, 0x00, 0x00, 10, // Length
+        0, char(0xFF), 0x05, char(0b1000'0000), char(0b1000'0000), char(0b0000'0000),
+        END_OF_TRACK
+    };
+    std::string data(buffer, sizeof(buffer));
+    std::stringstream ss(data);
+
+    std::string metadata = "";
+    auto receiver = Builder()
+        .meta(midi::Duration(0), 0x05, metadata)
+        .meta(midi::Duration(0), 0x2F, "")
+        .build();
+
+    read_mtrk(ss, *receiver);
+    receiver->check_finished();
+}
+
 #endif
