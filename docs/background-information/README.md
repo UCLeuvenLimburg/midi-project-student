@@ -7,8 +7,8 @@
   * [Variable Length Integers](variable-length-integers.md)
 * C++ specific
   * [Strong Typedefs](strong-typedefs.md)
-  * [Namespaces](namespaces.md)
+  * [Namespaces](namespace.md)
   * [Memory Alignment](memory-alignment.md)
 * Visual Studio specific
   * [Debugger Visualizers](debugger-visualizers.md)
-* [Inversion of Control](inversion-of-control.me)
+* [Inversion of Control](inversion-of-control.md)
