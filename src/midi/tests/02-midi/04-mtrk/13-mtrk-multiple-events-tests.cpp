@@ -27,6 +27,7 @@ TEST_CASE("Reading MTrk, multiple note on events without running status")
         .build();
 
     read_mtrk(ss, *receiver);
+    receiver->check_finished();
 }
 
 TEST_CASE("Reading MTrk, multiple note on events with running status")
@@ -48,6 +49,7 @@ TEST_CASE("Reading MTrk, multiple note on events with running status")
         .build();
 
     read_mtrk(ss, *receiver);
+    receiver->check_finished();
 }
 
 TEST_CASE("Reading MTrk, multiple note off events with running status")
@@ -71,6 +73,7 @@ TEST_CASE("Reading MTrk, multiple note off events with running status")
         .build();
 
     read_mtrk(ss, *receiver);
+    receiver->check_finished();
 }
 
 TEST_CASE("Reading MTrk, multiple program change events with running status")
@@ -94,6 +97,7 @@ TEST_CASE("Reading MTrk, multiple program change events with running status")
         .build();
 
     read_mtrk(ss, *receiver);
+    receiver->check_finished();
 }
 
 TEST_CASE("Reading MTrk, running status with different kinds of events")
@@ -131,6 +135,7 @@ TEST_CASE("Reading MTrk, running status with different kinds of events")
         .build();
 
     read_mtrk(ss, *receiver);
+    receiver->check_finished();
 }
 
 TEST_CASE("Reading MTrk consisting of note on, note on, note off, note off")
