@@ -19,6 +19,7 @@ namespace shell
         void add_argument(const std::string& prefix, std::string*);
 
         void process(const std::vector<std::string>&);
+        void process(int argc, char** argv);
         std::vector<std::string> positional_arguments() const;
 
     private:

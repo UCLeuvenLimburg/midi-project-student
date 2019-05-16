@@ -85,6 +85,12 @@ void CommandLineParser::process(std::list<std::string>& arguments)
     }
 }
 
+void CommandLineParser::process(int argc, char** argv)
+{
+    std::vector<std::string> vec(argv + 1, argv + argc);
+    process(vec);
+}
+
 bool CommandLineParser::is_prefix_in_use(const std::string& prefix) const
 {
     return m_map.find(prefix) != m_map.end();
