@@ -80,7 +80,7 @@ TEST_CASE("Reading MTrk, multiple program change events with running status")
 {
     char buffer[] = {
         MTRK,
-        0x00, 0x00, 0x00, 14, // Length
+        0x00, 0x00, 0x00, 11, // Length
         10, PROGRAM_CHANGE(2, 5),
         40, PROGRAM_CHANGE_RS(10),
         20, PROGRAM_CHANGE_RS(111),
