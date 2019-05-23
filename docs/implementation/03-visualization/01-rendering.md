@@ -1,5 +1,14 @@
 # Rendering
 
+## Important Message
+
+In this last steps, you will generate a bunch of .bmp files, which
+can amount to multiple GBs of data. Do *not* dare add these
+to your repo. Your repo should only contain code,
+not files produced by your code.
+
+## Approach
+
 In this last sequence of steps, you will generate the actual visualization of the MIDI data.
 You are not given any tests: it is easy for you to actually run your program and check
 whether the results agree with your expectations.
@@ -46,3 +55,14 @@ $ midi -h 10 -w 500 music.mid f%d.bmp
 ```
 
 reads in `music.mid` and produces frames `f00000.bmp`, `f000001.bmp`, etc. Each note rectangle is 10 pixels high. Frames are 500 pixels wide and move one pixel at a time.
+
+## Creating a movie
+
+Once you generated all of your frames, you can turn them into an actual movie. You are free to use any external tool for this: there's no programming necessary for this part.
+A freely available command line tool is [ffmpeg](https://ffmpeg.org/download.html). You can simply download this .exe and run it as follows:
+
+```bash
+$ ffmpeg -i frame%05d.bmp -c:v libx264 -r 30 -pix_fmt yuv420p movie.mp4
+```
+
+This should create a file `movie.mp4` which can be played in a media player.
