@@ -1,0 +1,15 @@
+= Background Information
+
+* link:image-example.asciidoc[Image Format Example]
+* MIDI
+** link:midi.md[MIDI File Format]
+** link:endianness.asciidoc[Endianness]
+** link:variable-length-integers.asciidoc[Variable Length Integers]
+* C++ specific
+** link:strong-typedefs.asciidoc[Strong Typedefs]
+** link:namespace.asciidoc[Namespaces]
+** link:memory-alignment.asciidoc[Memory Alignment]
+* Visual Studio specific
+** link:debugger-visualizers.asciidoc[Debugger Visualizers]
+* link:inversion-of-control.asciidoc[Inversion of Control]
+* link:command-line-parser.md[Command Line Parser]
