@@ -3,7 +3,7 @@
 * [Image Format Example](image-example.asciidoc) explains how binary files work. Reading this is optional, but it might be helpful in getting a better understanding of the MIDI file format.
 * MIDI
   * [MIDI File Format](midi.md)
-  * [Endianness](endianness.md)
+  * [Endianness](endianness.asciidoc)
   * [Variable Length Integers](variable-length-integers.md)
 * C++ specific
   * [Strong Typedefs](strong-typedefs.md)

@@ -1,0 +1,34 @@
+= Endianness
+
+The decimal notation of the number twelve is `12`: the digits are ordered from most to least significant.
+
+[%header,cols=4,width="30%"]
+|===
+|10^3^|10^2^|10^1^|10^0^|
+
+0 | 0 | 1 | 2
+|===
+
+We could as well reverse the order of the digits and write `21` to mean twelve, but that's not the choice that history made for us.
+
+In CPU-speak, our writing style is called *big-endian*: the digit with the largest weight comes first.
+The opposite order is called *little-endian*.
+
+While big-endian notation has the advantage of being more familiar to us humans, little-endian has some performance advantages (well, on old computers anyway, not sure if it makes much of a difference today.)
+For this reason Intel chose little endianness for its CPU architecture.
+However, MIDI files are big-endian, meaning that every time we read a value from a MIDI file, we need to reverse the digit order so that our CPU interprets it correctly.
+
+Since endianness involves reverses digits, this raises the question "What constitutes a digit?"
+Examples of possible interpretations are
+
+* Binary digits: say we want to store 200, which in binary is `0b11001000`.
+  Should we reverse these bits, which results in `0b00010011`?
+* Hexadecimal digits: 200 in hexadecimal is `0xC8`.
+  If we reverse these, we get `0x8C`.
+  Note that this is different from the binary reversal: `0x8C` translates to `0b10001100`.
+
+Neither of the above interpretations is correct.
+Endianness works on the level of *bytes*, i.e., a "digit" corresponds to a single byte.
+Consider the value `0x12345678`, which in big-endian order would be stored as four bytes with values `0x12 0x34 0x56 0x78`.
+In little-endian order, these *bytes* need to be reversed.
+Remember that a single byte corresponds to *two* hexadecimal digits, so we get `0x78 0x56 0x34 0x12`.
