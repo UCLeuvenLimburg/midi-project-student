@@ -9,5 +9,6 @@ the variable length integer will need, you will need to read one byte at a time.
 You will need to find a way to determine whether the
 most significant bit of a byte is set.
 
-* You can either rely on bitwise operators. `&` is your friend.
+* You can rely on bitwise operators. `&` is your friend.
 * You can ask yourself the question what it means for a byte's value to have its most significant bit set.
+  What is the difference in value between `0b1000'0000` and `0b0000'0000`?
