@@ -1,0 +1,67 @@
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+
+= Setup
+
+== Creating Your Very Own Fork
+
+Go to the GitHub Classroom link provided to you and accept the assignment.
+This creates a new fork (i.e. a copy) of the Git repository under your account.
+
+Clone your repo using the following command, replacing `URL` by the url of your fork.
+
+```bash
+# Clone your repo
+$ git clone URL midi-project
+
+# Enter the repository
+$ cd midi-project
+
+# Add upstream remote
+$ git remote add upstream https://github.com/UCLeuvenLimburg/midi-project-student
+```
+
+IMPORTANT: **Do not dare downloading the code as a zip.** It is *known* that strange things
+tend to happen to the laptops of those who dare violate this rule.
+
+IMPORTANT: Also, **do not clone your repository into a DropBox/OneDrive/Google Drive managed directory**.
+This makes no sense whatsoever and can cause serious problems.
+
+== GitHub
+
+On the https://github.com/UCLeuvenLimburg/midi-project-student[main repository's website],
+click the Watch button in order to receive notifications about updates.
+
+When updates are made, you can pull them as follows (note that you should first commit/stash
+all your changes, otherwise Git might complain):
+
+```bash
+$ git pull upstream master
+```
+
+== Visual Studio
+
+* Use `midi.sln` solution file to open your project in Visual Studio.
+* Select "Show All Files" in the Solution Explorer so as to view the folder structure.
+* Notice the three builds available: Debug, Release and Testing.
+** To run the tests, select the Testing build and press `CTRL+F5` or `F5` (to enable debugging).
+   Note that we're not making use of Visual Studio's
+   support for testing, so as far as the IDE knows, there are no tests. In other words, do not be surprised
+   if the Test Explorer says no tests are present.
+** To run your own `main` function, select either Debug or Release and press `CTRL+F5` or `F5` (to enable debugging).
+   During development, you'll probably want to use the former.
+
+== Manual Configuration
+
+This section is meant for those not using Visual Studio.
+Make the following configuration settings:
+
+* Add `.` as include directory and compile from within the `src/midi` folder. This makes it easier to specify `#include` paths: they all start from the root of the project.
+  AFAIK, setting `.` as include directory is done using the `-I` option. E.g., `gcc -I. [other stuff]`.
+* In order to run the tests, define the `TEST_BUILD` macro. AFAIK, this can be achieved using the `-D` option: `gcc -DTEST_BUILD [other stuff]`.
+
