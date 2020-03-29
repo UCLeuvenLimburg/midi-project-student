@@ -35,8 +35,8 @@ To define a debugger visualizer for values of type `age`, start by adding a `.na
 Open this file.
 It should contain
 
-[source,xml]
 debugger-visualizer.natvis
+[source,xml]
 ----
 <?xml version="1.0" encoding="utf-8"?>
 <AutoVisualizer xmlns="http://schemas.microsoft.com/vstudio/debugger/natvis/2010">
