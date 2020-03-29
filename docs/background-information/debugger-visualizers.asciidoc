@@ -6,16 +6,12 @@ This is where https://docs.microsoft.com/en-us/visualstudio/debugger/create-cust
 
 For example, say we define a new type age (see for example link:./strong-typedefs.md[strong typedefs]):
 
-.Test
-[%collapsible]
-====
 [source,c++]
 ----
 struct age : tagged<int, age>, ordered<age> { using tagged::tagged; };
 
 age a(5);
 ----
-====
 
 When querying the value of `a` while debugging, Visual Studio shows you `{ ... }`.
 Hardly impressive.
@@ -42,6 +38,7 @@ Open this file.
 It should contain
 
 [source,xml]
+.debugger-visualizer.natvis
 ----
 <?xml version="1.0" encoding="utf-8"?>
 <AutoVisualizer xmlns="http://schemas.microsoft.com/vstudio/debugger/natvis/2010">
@@ -51,6 +48,7 @@ It should contain
 Add the following rule for the type `age`:
 
 [source,diff]
+.debugger-visualizer.natvis
 ----
 <?xml version="1.0" encoding="utf-8"?>
 <AutoVisualizer xmlns="http://schemas.microsoft.com/vstudio/debugger/natvis/2010">
