@@ -6,7 +6,7 @@
   * [Endianness](endianness.asciidoc)
   * [Variable Length Integers](variable-length-integers.asciidoc)
 * C++ specific
-  * [Strong Typedefs](strong-typedefs.md)
+  * [Strong Typedefs](strong-typedefs.asciidoc)
   * [Namespaces](namespace.asciidoc)
   * [Memory Alignment](memory-alignment.asciidoc)
 * Visual Studio specific
