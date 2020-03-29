@@ -8,7 +8,7 @@
 * C++ specific
   * [Strong Typedefs](strong-typedefs.md)
   * [Namespaces](namespace.md)
-  * [Memory Alignment](memory-alignment.md)
+  * [Memory Alignment](memory-alignment.asciidoc)
 * Visual Studio specific
   * [Debugger Visualizers](debugger-visualizers.asciidoc)
 * [Inversion of Control](inversion-of-control.asciidoc)
