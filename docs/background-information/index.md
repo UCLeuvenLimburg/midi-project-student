@@ -11,5 +11,5 @@
   * [Memory Alignment](memory-alignment.md)
 * Visual Studio specific
   * [Debugger Visualizers](debugger-visualizers.asciidoc)
-* [Inversion of Control](inversion-of-control.md)
+* [Inversion of Control](inversion-of-control.asciidoc)
 * [Command Line Parser](command-line-parser.md)
