@@ -1,10 +1,11 @@
-# Command Line Parser
+= Command Line Parser
 
-## Example Usage
+== Example Usage
 
 A quick example of how to use the `CommandLineParser` class:
 
-```c++
+[source,c++]
+----
 int main(int argc, char** argv)
 {
     std::string stringValue = "default";
@@ -30,9 +31,10 @@ int main(int argc, char** argv)
     }
     std::cout << "---" << std::endl;
 }
-```
+----
 
-```bash
+[source,bash]
+----
 # All parameters are optional
 $ ./midi.exe
 stringValue=default
@@ -73,4 +75,4 @@ ABC
 XYZ
 123
 ---
-```
+----

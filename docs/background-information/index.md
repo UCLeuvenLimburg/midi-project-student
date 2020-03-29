@@ -1,6 +1,6 @@
 # Technical Details
 
-* [Image Format Example](image-example.md) explains how binary files work. Reading this is optional, but it might be helpful in getting a better understanding of the MIDI file format.
+* [Image Format Example](image-example.asciidoc) explains how binary files work. Reading this is optional, but it might be helpful in getting a better understanding of the MIDI file format.
 * MIDI
   * [MIDI File Format](midi.md)
   * [Endianness](endianness.md)
