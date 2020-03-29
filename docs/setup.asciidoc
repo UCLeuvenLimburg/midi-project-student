@@ -8,10 +8,10 @@ endif::[]
 
 == Creating Your Very Own Fork
 
-Go to the GitHub Classroom link provided to you and accept the assignment.
+Go to the GitHub Classroom link provided to you (see Toledo) and accept the assignment.
 This creates a new fork (i.e. a copy) of the Git repository under your account.
 
-Clone your repo using the following command, replacing `URL` by the url of your fork.
+Clone this fresh repository using the following command, replacing `URL` by the url of your fork.
 
 ```bash
 # Clone your repo
@@ -30,10 +30,17 @@ tend to happen to the laptops of those who dare violate this rule.
 IMPORTANT: Also, **do not clone your repository into a DropBox/OneDrive/Google Drive managed directory**.
 This makes no sense whatsoever and can cause serious problems.
 
-== GitHub
+== Receiving Updates
 
 On the https://github.com/UCLeuvenLimburg/midi-project-student[main repository's website],
 click the Watch button in order to receive notifications about updates.
+These can include
+
+* Clarifications
+* Extra tests
+* Bug fixes
+
+It is therefore crucial for you to keep up to date.
 
 When updates are made, you can pull them as follows (note that you should first commit/stash
 all your changes, otherwise Git might complain):
@@ -59,7 +66,8 @@ $ git pull upstream master
 This section is meant for those not using Visual Studio.
 Make the following configuration settings:
 
-* Add `.` as include directory and compile from within the `src/midi` folder. This makes it easier to specify `#include` paths: they all start from the root of the project.
+* Add `.` as include directory and compile from within the `src/midi` folder.
+  This makes it easier to specify `#include` paths: they all start from the root of the project.
   AFAIK, setting `.` as include directory is done using the `-I` option. E.g., `gcc -I. [other stuff]`.
-* In order to run the tests, define the `TEST_BUILD` macro. AFAIK, this can be achieved using the `-D` option: `gcc -DTEST_BUILD [other stuff]`.
-
+* In order to run the tests, define the `TEST_BUILD` macro. AFAIK,
+  this can be achieved using the `-D` option: `gcc -DTEST_BUILD [other stuff]`.
