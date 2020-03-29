@@ -7,7 +7,7 @@
   * [Variable Length Integers](variable-length-integers.md)
 * C++ specific
   * [Strong Typedefs](strong-typedefs.md)
-  * [Namespaces](namespace.md)
+  * [Namespaces](namespace.asciidoc)
   * [Memory Alignment](memory-alignment.asciidoc)
 * Visual Studio specific
   * [Debugger Visualizers](debugger-visualizers.asciidoc)
