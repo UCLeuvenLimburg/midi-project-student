@@ -28,7 +28,7 @@ This includes
 == Important Links
 
 * link:{url-setup}[Setup Instructions]
-* link:{url-background}[Background Information]: contains "conceptual" information about the project, i.e., unrelated to the actual implementation. Read this if you want to understand at all what you're doing.
-* link:{url-implementation}[Implementation steps]: step-by-step guide of how to develop your project.
-* https://github.com/UCLeuvenLimburg/midihelper[Python Helper Script]: can help you with debugging.
+* link:{url-background}[Background Information]
+* link:{url-implementation}[Implementation steps]
+* https://github.com/UCLeuvenLimburg/midihelper[Python Helper Script] which can help you with debugging.
 * http://files.leone.ucll.be/midi-samples.zip[Sample MIDI files and corresponding visualizations]
