@@ -45,6 +45,7 @@ It should contain
 
 Add the following rule for the type `age`:
 
+.debugger-visualizer.natvis
 [source,diff]
 ----
 <?xml version="1.0" encoding="utf-8"?>
