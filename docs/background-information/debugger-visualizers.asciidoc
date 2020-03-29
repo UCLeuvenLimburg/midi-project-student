@@ -38,7 +38,7 @@ Open this file.
 It should contain
 
 [source,xml]
-.__debugger-visualizer.natvis__
+.*__debugger-visualizer.natvis__*
 ----
 <?xml version="1.0" encoding="utf-8"?>
 <AutoVisualizer xmlns="http://schemas.microsoft.com/vstudio/debugger/natvis/2010">
@@ -48,7 +48,7 @@ It should contain
 Add the following rule for the type `age`:
 
 [source,diff]
-.__debugger-visualizer.natvis__
+.*__debugger-visualizer.natvis__*
 ----
 <?xml version="1.0" encoding="utf-8"?>
 <AutoVisualizer xmlns="http://schemas.microsoft.com/vstudio/debugger/natvis/2010">
