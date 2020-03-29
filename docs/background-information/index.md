@@ -4,7 +4,7 @@
 * MIDI
   * [MIDI File Format](midi.md)
   * [Endianness](endianness.asciidoc)
-  * [Variable Length Integers](variable-length-integers.md)
+  * [Variable Length Integers](variable-length-integers.asciidoc)
 * C++ specific
   * [Strong Typedefs](strong-typedefs.md)
   * [Namespaces](namespace.asciidoc)
