@@ -1,3 +1,9 @@
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :warning:
+endif::[]
+
 = Setup
 
 == Creating Your Very Own Fork
