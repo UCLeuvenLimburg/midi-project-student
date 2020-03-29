@@ -6,12 +6,16 @@ This is where https://docs.microsoft.com/en-us/visualstudio/debugger/create-cust
 
 For example, say we define a new type age (see for example link:./strong-typedefs.md[strong typedefs]):
 
+.Test
+[%collapsible]
+====
 [source,c++]
 ----
 struct age : tagged<int, age>, ordered<age> { using tagged::tagged; };
 
 age a(5);
 ----
+====
 
 When querying the value of `a` while debugging, Visual Studio shows you `{ ... }`.
 Hardly impressive.
@@ -24,6 +28,8 @@ a                      { ... }
 ----
 
 We'd prefer it if we didn't have to press the expand arrow to find out what `a`'s value is.
+
+== Debugger Visualizers
 
 To define a debugger visualizer for values of type `age`, start by adding a `.natvis` file to your project:
 
