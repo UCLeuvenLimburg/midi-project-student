@@ -178,6 +178,24 @@ Even though it looks like a regular call, it will be ignored in release builds.
 
 == When To Use Assertions
 
+Assertions have to be used judiciously.
+It might be tempting to use them to validate parameter values instead of exceptions:
+
+[source,c++]
+----
+double sqrt(double x)
+{
+    assert(x >= 0);
+
+    ...
+}
+----
+
+This is risky as the assertion will be turned off at runtime and a malicious user might want to abuse that.
+It is much safer to be defensive about external input, i.e., also check it in release build.
+
+Assertions should only be used to check your own results within your own functions, as a form of sanity check.
+
 == More Information
 
 * https://wiki.c2.com/?WhatAreAssertions[What Are Assertions?]
