@@ -204,7 +204,7 @@ in.read(reinterpret_cast<char*>(&header), sizeof(HEADER));
 
 Realize that `reinterpret_cast` is a dangerous cast: it essentially tells the compiler to ditch the type system entirely and to just trust us.
 
-Now we can read the header data by simply accessing `header`'s field.
+Now we can read the header data by simply accessing ``header``'s field.
 
 [source,c++]
 ----
