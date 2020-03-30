@@ -23,7 +23,7 @@ a                      { ... }
   ordered<age>         { ... }
 ----
 
-We'd prefer it if we didn't have to press the expand arrow to find out what `a`'s value is.
+We'd prefer it if we didn't have to press the expand arrow to find out what ``a``'s value is.
 
 == Debugger Visualizers
 
