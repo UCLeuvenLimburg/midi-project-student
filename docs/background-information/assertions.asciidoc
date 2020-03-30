@@ -1,0 +1,184 @@
+= Assertions
+
+Writing code is not easy.
+Very soon, you learn that you don't get it right the first time.
+We can tell you that as you grow more experienced, this really won't change much.
+It will still come as a surprise if something works on the first try.
+But how do you check if your code is correct?
+
+Some people like to test their code in the `main` function.
+It works, but it's a very short term solution.
+
+A better alternative is to write tests.
+As your code grows larger, so does your test library.
+Having a large collection of tests gives some kind of reassurance.
+It also allows you to check if a change (e.g. refactoring) you made has broken something.
+In summary, having tests is a Good Thing.
+
+Another way of checking your code is to rely on __assertions__.
+This is a condition that is checked and causes a clear signal to be emitted whenever the condition is not satisfied.
+Generally this signal is a dramatic crash with a short message of which check failed.
+
+Unlike tests, assertions are not separate and grouped together in tests.
+Instead, they are sprinkled all across your code.
+Each time execution passes through that point, the condition is checked.
+
+== Example
+
+Let's write a `sqrt` function. To compute the square root of `x`, it operates as follows:
+
+* It knows the square root will be somewhere between `0` and `x`. Let's give these bounds names: `lower = 0` and `upper = x`.
+* It computes the middle element of this interval: `middel = (lower + upper) / 2`.
+* It checks if `middle` is the square root of `x`:
+** If ``middle``^2^ < `x`, we should look higher. `middle` becomes the new lower bound: `lower = middle`.
+** If ``middle``^2^ > `x`, we went too high. `middle` becomes the new upper bound: `upper = middle`.
+** Otherwise, we found our solution.
+
+An implementation could look like this:
+
+[source,c++]
+----
+double sqrt(double x)
+{
+    bool found = false;
+    double lower = 0;
+    double upper = x;
+    double middle;
+
+    while ( !found )
+    {
+        middle = (lower + upper) / 2;
+        double middle_sqr = middle * middle;
+
+        if ( middle_sqr < x )
+        {
+            lower = middle;
+        }
+        else if ( middle_sqr > x )
+        {
+            upper = middle;
+        }
+        else
+        {
+            found = true;
+        }
+    }
+
+    return middle;
+}
+----
+
+We can add assertions as follows:
+
+[source,c++]
+----
+double sqrt(double x)
+{
+    bool found = false;
+    double lower = 0;
+    double upper = x;
+    double middle;
+
+    while ( !found )
+    {
+        // Make sure lower is an UNDERestimation
+        assert(lower * lower < x);
+
+        // Make sure upper is an OVERestimation
+        assert(upper * upper < x);
+
+        middle = (lower + upper) / 2;
+
+        // Make sure middle is indeed in between lower and upper
+        assert(lower < middle && middle < upper);
+
+        double middle_sqr = middle * middle;
+
+        if ( middle_sqr < x )
+        {
+            lower = middle;
+        }
+        else if ( middle_sqr > x )
+        {
+            upper = middle;
+        }
+        else
+        {
+            found = true;
+        }
+    }
+
+    // Make sure middle is indeed the square root
+    assert(middle * middle == x);
+
+    return middle;
+}
+----
+
+These assertions perform simple "sanity checks" throughout the code.
+Say we made a mistake in the formula for `middle` and wrote the similar formula `(upper - lower) / 2` instead, this would be caught by the assertion following it.
+
+Another example would be a sorting algorithm: at the end of the function you might assert that the resulting list is indeed sorted.
+This way, your algorithm will be tested every time it is run.
+
+== Debug vs Release Build
+
+You might think that having checks all over the place will have a negative impact on performance.
+This is indeed the case.
+Assertions could be placed within loops and be executed thousands or millions times per second, which *will* slow your program down considerably.
+
+At least tests do not lead no such performance hit. This seems a clear drawback to assertions.
+
+Luckily, assertions can be turned off. In C++, this is done using macros:
+
+[code,c++]
+----
+#ifdef _DEBUG
+#define assert(condition)   if ( !(condition) ) { ... }
+#else
+#define assert(condition)
+#endif
+----
+
+In other words, assertions will automatically be removed if you compile in release build.
+The `assert` macro makes part of C++'s standard library and can be cound in `assert.h`.
+
+Most other programming languages have no support for macros, but provide assertions some other way.
+
+[%collapsible]
+.Assertions in Java
+====
+=====
+For example, Java sports the `assert` keyword:
+
+[code,java]
+----
+assert condition : "error message";
+----
+
+By default, assertions are ignored. Only when the `-ea` flag (enable assertions) is passed to the VM will
+the assertions be checked.
+=====
+====
+
+[%collapsible]
+.Assertions in C#
+====
+=====
+Similary, C# offers the `Debug.Assert` method:
+
+[code,c#]
+----
+Debug.Assert(condition);
+----
+
+Even though it looks like a regular call, it will be ignored in release builds.
+=====
+====
+
+== When To Use Assertions
+
+== More Information
+
+* https://wiki.c2.com/?WhatAreAssertions[What Are Assertions?]
+* https://en.wikipedia.org/wiki/Assertion_(software_development)[Wikipedia article]
