@@ -341,7 +341,7 @@ Allowing this does not defeat the purpose of `tagged`: the breaking open needs t
 This is typical in the C++ world: we're protecting against Murphy, not against Machiavelli.
 In other words, we want to eliminate your blunders but not your freedom.
 
-Also, we'd like to make `tagged`'s constructor available in the subclasses.
+Also, we'd like to make ``tagged``'s constructor available in the subclasses.
 Remember that in C++, Java and C# constructors are not inherited and need to be redefined at every level in the class hierarchy.
 
 [source,c++]
@@ -352,7 +352,7 @@ struct Name         : tagged<std::string, Name>         { using tagged::tagged; 
 struct EmailAddress : tagged<std::string, EmailAddress> { using tagged::tagged; };
 ----
 
-`using tagged::tagged` is a C++ trick to express your wish to copy all of `tagged`'s constructors.
+`using tagged::tagged` is a C++ trick to express your wish to copy all of ``tagged``'s constructors.
 
 == Operators
 
