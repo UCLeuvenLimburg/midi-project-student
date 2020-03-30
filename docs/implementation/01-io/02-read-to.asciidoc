@@ -9,7 +9,7 @@ Write a template function `read_to<T>` that receives
 
 `read_to<T>(in, buffer, n)` reads in `n` `T` values from the `in`.
 It does this by reading raw bytes from the `istream` and reinterpreting these bytes as a `n` consecutive ``T``s.
-An example of how to do this can be found in the link:../../../docs/background-information/image-example.asciidoc[background information].
+An example of how to do this can be found in the link:../../background-information/image-example.asciidoc[background information].
 
 [source,c++]
 ----
@@ -23,7 +23,7 @@ reads 4 bytes (assuming `int` is 4 bytes long) from `in` and reinterprets these 
 
 `read_to` should check whether it succeeded.
 Rely on the ``istream``'s `fail` method for this.
-If the read operation failed, simply crash the application by making use of an link:../../../docs/background-information/assertions.asciidoc[assertion].
+If the read operation failed, simply crash the application by making use of an link:../../background-information/assertions.asciidoc[assertion].
 For this project, you can make use of `CHECK`:
 
 [source,c++]
