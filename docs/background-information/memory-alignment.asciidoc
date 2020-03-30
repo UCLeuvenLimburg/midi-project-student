@@ -123,9 +123,9 @@ aaaabaaaab
 Now `&p[1].a` has address 5 while it has size 4.
 
 To remedy this, the compiler adds further padding at the end of the struct so as to make its size a multiple of the size of the largest member.
-In `Bar`'s case, `a` is largest, counting 4 bytes.
+In ``Bar``'s case, `a` is largest, counting 4 bytes.
 Without padding, `sizeof(Bar) == 5`, so an extra 3 bytes are required to make `sizeof(Bar)` a multiple of 4.
-`Bar`'s memory layout thus becomes
+``Bar``'s memory layout thus becomes
 
 ----
 01234567
