@@ -1,0 +1,17 @@
+= `read_variable_length_integer`
+
+Write a function `read_variable_length_integer(in)` that reads a link:../../background-information/variable-length-integers.asciidoc[variable length integer] from the input stream `in`.
+
+For example,
+
+[source,c++]
+----
+// in contains 2 byes:
+//   0b1000'0001
+//   0b0000'0000
+auto value = read_variable_length_integer(in);
+----
+
+`value` should be equal to `0b1000'0000`.
+
+TIP: Some http://pvm.leone.ucll.be/topics/bit-manipulation.pdf[bit manipulation] might be necessary.
