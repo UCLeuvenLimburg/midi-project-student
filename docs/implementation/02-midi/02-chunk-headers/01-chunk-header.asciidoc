@@ -24,8 +24,6 @@ struct CHUNK_HEADER
 [NOTE,caption={task-caption}]
 ====
 Define the struct `CHUNK_HEADER` to store chunk header data.
-
-Keep it simple: if the documentation says the header contains two 32-bit unsigned ``int``s, you only need to create a `struct` with two `uint32_t` fields.
 ====
 
 [IMPORTANT]
