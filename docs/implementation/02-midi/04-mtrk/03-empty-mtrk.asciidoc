@@ -46,9 +46,9 @@ Instead, you'll need `std::move(ptr)` to explicitly carry over ownership.
 ----
 auto p = std::make_unique<byte[]>(5); <1>
 
-assert(p != nullptr); <2>
-f(std::move(p)); <3>
-assert(p == nullptr); <4>
+assert(p != nullptr);                 <2>
+f(std::move(p));                      <3>
+assert(p == nullptr);                 <4>
 ----
 <1> Creates a unique pointer to a byte array of length 5.
 <2> At this point, `p` cannot be `nullptr`.
