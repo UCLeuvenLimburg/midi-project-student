@@ -9,5 +9,5 @@ endif::[]
 
 [NOTE,caption={task-caption}]
 ====
-Add support for program change events to `read_mtrk`.
+Add support for link:../../../background-information/midi.asciidoc#programchange[program change events] to `read_mtrk`.
 ====
