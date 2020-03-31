@@ -10,14 +10,24 @@ For example, take the note on event.
 
 [source,c++]
 ----
-void<1> note_on<2>(Duration dt, Channel channel, NoteNumber note, uint8_t velocity<3>)<4>
+void note_on(Duration dt, Channel channel, NoteNumber note, uint8_t velocity);
 ----
-<1> The return type always has to be `void`.
-<2> The function's name mirrors the event type.
-<3> The parameters correspond to the data associated with the event.
-<4> Note the lack of `const`: we want our receiver objects to change state internally upon reception of event data.
+
+Note the following:
+
+* The return type always has to be `void`.
+* The function's name mirrors the event type.
+* The parameters correspond to the data associated with the event.
+* Note the lack of `const`: we want our receiver objects to change state internally upon reception of event data.
 
 A couple of other examples:
 
 * `void meta(Duration dt, uint8_t type, std::unique_ptr<uint8_t[]> data, uint64_t data_size)`
 * `void sysex(Duration dt, std::unique_ptr<uint8_t[]> data, uint64_t data_size)`
+
+[NOTE,caption={task-caption}]
+====
+Define `EventReceiver`.
+Add one member function per event type.
+You need nine in total.
+====
