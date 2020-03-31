@@ -1,5 +1,7 @@
 = `switch_endianness`
 
+[NOTE,caption=task]
+====
 Define the following three functions in the `io` namespace:
 
 [source,c++]
@@ -10,8 +12,12 @@ void switch_endianness(uint64_t* n);
 ----
 
 These functions must reverse the order of the bytes in the given integer.
+====
 
 As always, put the declarations in a `.h` file and the corresponding definitions in a `.cpp` file.
 Note that the tests expect you to name these files a certain way, so go take a look at them in order to determine what filenames you should use.
 
+[NOTE,caption=background information]
+====
 In order to shift bytes around, you should rely on http://pvm.leone.ucll.be/topics/bit-manipulation.pdf[bit manipulation operators] such as `&`, `|`, `<<` and `>>`.
+====
