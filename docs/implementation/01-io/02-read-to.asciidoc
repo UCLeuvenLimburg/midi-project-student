@@ -7,6 +7,33 @@ endif::[]
 
 = `read_to`
 
+We want a function that allows us to easily read data of any type from binary files. For example,
+
+[source,c++]
+----
+std::ifstream in(filename);
+
+int data;
+read_to(in, &data);
+----
+
+reads 4 bytes (assuming `int` is 4 bytes long) from `in` and reinterprets these bytes as a single `int`.
+This `int` is then stored in `data`, i.e. it is *not* returned.
+
+We would also like to read multiple values at once:
+
+[source,c++]
+----
+std::ifstream in(filename);
+
+int data[5];
+read_to(in, data, 5);
+----
+
+reads 20 bytes (again, assuming `int` is 4 bytes long).
+These 5 values are stored in the array `data`.
+
+
 [NOTE,caption={task-caption}]
 ====
 Write a template function `read_to<T>` that receives
@@ -25,23 +52,18 @@ It does this by reading raw bytes from the `istream` and reinterpreting these by
 An example of how to reinterpret bytes can be found in the link:../../background-information/image-example.asciidoc[background information].
 ====
 
-== Example
-
-[source,c++]
-----
-std::ifstream in(filename);
-
-int data;
-read_to(in, &data);
-----
-
-reads 4 bytes (assuming `int` is 4 bytes long) from `in` and reinterprets these bytes as a single `int`.
-
 == Error Checking
 
-`read_to` should check whether it succeeded.
-Rely on the ``istream``'s `fail` method for this.
-If the read operation failed, simply crash the application by making use of an link:../../background-information/assertions.asciidoc[assertion].
+Reading from an invalid `in` is possible and won't crash.
+Execution will simply proceed with the wrong values and some other unrelated part of the application will crash.
+You definitely don't want this.
+Instead, you want to fail fast, i.e., you want to be notified as soon as the error presents itself.
+It is therefore strongly advised to perform some rror checking.
+
+Hence, `read_to` should check whether the read operation succeeded.
+Rely on the ``istream``'s http://www.cplusplus.com/reference/ios/ios/fail/[`fail` method] for this.
+If the read operation failed, simply crash the application.
+You can achieve this by making use of an link:../../background-information/assertions.asciidoc[assertion].
 For this project, you can make use of `CHECK`:
 
 [source,c++]
@@ -57,3 +79,9 @@ void foo()
 If `condition` evaluates to `false`, `error_message` is printed and the application is aborted.
 The check will be performed both in debug and release build.
 Hardly elegant, but good enough for our purposes.
+
+[IMPORTANT]
+====
+We strongly recommend you use `CHECK` as often as you can, so as to catch errors as soon as possible.
+It'll simply debugging considerably.
+====
