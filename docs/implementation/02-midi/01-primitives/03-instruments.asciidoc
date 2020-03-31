@@ -1,10 +1,17 @@
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :warning:
+:task-caption: 👨‍🔧
+endif::[]
+
 = Instruments
 
 Instruments have unique identifying numbers ranging from `0` to `127`.
 As with channels, this number's only purposes is to be able to make the distinction between instruments.
 An instrument having higher or lower id is meaningless.
 
-[NOTE,caption=Task]
+[NOTE,caption={task-caption}]
 ====
 Introduce a new type `Instrument` with support for `==`, `!=` and `<<`.
 ====
