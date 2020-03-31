@@ -9,5 +9,5 @@ endif::[]
 
 [NOTE,caption={task-caption}]
 ====
-Define a struct `MTHD` that models an link:../../../background-information/midi.asciidoc#chunks[MThd chunk].
+Define a struct `MTHD` that models an link:../../../background-information/midi.asciidoc#mthd[MThd chunk].
 ====
