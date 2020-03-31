@@ -203,4 +203,31 @@ TEST_CASE("ChannelNoteCollector with two consecutive notes, instrument change on
     CATCH_CHECK(notes[1] == midi::NOTE(midi::NoteNumber(7), midi::Time(200), midi::Duration(100), 113, midi::Instrument(41)));
 }
 
+TEST_CASE("ChannelNoteCollector does not ignore other events")
+{
+    std::vector<midi::NOTE> notes;
+    midi::ChannelNoteCollector collector(midi::Channel(0), [&notes](const midi::NOTE& note) { notes.push_back(note); });
+
+    collector.channel_pressure(midi::Duration(100), midi::Channel(0), 45);
+    collector.note_on(midi::Duration(0), midi::Channel(0), midi::NoteNumber(5), 112);
+    collector.note_off(midi::Duration(100), midi::Channel(0), midi::NoteNumber(5), 0);
+
+    CATCH_REQUIRE(notes.size() == 1);
+    CATCH_CHECK(notes[0] == midi::NOTE(midi::NoteNumber(5), midi::Time(100), midi::Duration(100), 112, midi::Instrument(0)));
+}
+
+TEST_CASE("ChannelNoteCollector does not ignore other events on other channels")
+{
+    std::vector<midi::NOTE> notes;
+    midi::ChannelNoteCollector collector(midi::Channel(0), [&notes](const midi::NOTE& note) { notes.push_back(note); });
+
+    collector.note_on(midi::Duration(0), midi::Channel(1), midi::NoteNumber(5), 112);
+    collector.note_off(midi::Duration(100), midi::Channel(1), midi::NoteNumber(5), 0);
+    collector.note_on(midi::Duration(0), midi::Channel(0), midi::NoteNumber(5), 112);
+    collector.note_off(midi::Duration(100), midi::Channel(0), midi::NoteNumber(5), 0);
+
+    CATCH_REQUIRE(notes.size() == 1);
+    CATCH_CHECK(notes[0] == midi::NOTE(midi::NoteNumber(5), midi::Time(100), midi::Duration(100), 112, midi::Instrument(0)));
+}
+
 #endif
