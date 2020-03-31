@@ -1,3 +1,10 @@
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :warning:
+:task-caption: 👨‍🔧
+endif::[]
+
 = `read`
 
 `read_to<T>` is a fine function, but it can be cumbersome to use.
