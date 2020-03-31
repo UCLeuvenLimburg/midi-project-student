@@ -227,6 +227,7 @@ Based on this byte you will know what kind of data will follow.
 
 We now discuss each type of event in detail.
 
+[#meta]
 === Meta Events
 
 [%header,cols="1,^1,3",width="50%",grid=rows,frame=topbot]
@@ -258,6 +259,7 @@ Concretely, the end of track event is encoded by the following four bytes:
 | `0x00` | Signals zero bytes of data
 |===
 
+[#sysex]
 === System Exclusive Event
 
 [%header,cols="1,^1,3",width="50%",grid=rows,frame=topbot]
@@ -304,6 +306,7 @@ The general structure of a MIDI event can then be written
 
 We now discuss each MIDI event type.
 
+[#noteoff]
 ==== Note Off
 
 [%header,cols="1,^1,3",width="60%",grid=rows,frame=topbot]
@@ -324,6 +327,7 @@ what matters is that a higher index corresponds to a higher note.
 The velocity doesn't seem to have much effect according to my experiments.
 According to the documentation, it is used for after touch, but I don't hear any difference.
 
+[#noteon]
 ==== Note On
 
 [%header,cols="1,^1,3",width="60%",grid=rows,frame=topbot]
@@ -335,6 +339,7 @@ According to the documentation, it is used for after touch, but I don't hear any
 | `velocity` | 1 | Loudness (0-127)
 |===
 
+[#polyphonic]
 ==== Polyphonic Key Pressure
 
 [%header,cols="1,^1,3",width="60%",grid=rows,frame=topbot]
@@ -346,6 +351,7 @@ According to the documentation, it is used for after touch, but I don't hear any
 | `pressure` | 1 | Pressure value (0-127)
 |===
 
+[#controlchange]
 ==== Control Change
 
 [%header,cols="1,^1,3",width="60%",grid=rows,frame=topbot]
@@ -357,6 +363,7 @@ According to the documentation, it is used for after touch, but I don't hear any
 | `value` | 1 | New value (0-127)
 |===
 
+[#programchange]
 ==== Program Change
 
 [%header,cols="1,^1,3",width="60%",grid=rows,frame=topbot]
@@ -369,6 +376,7 @@ According to the documentation, it is used for after touch, but I don't hear any
 
 This corresponds to a change in musical instrument on the current channel.
 
+[#channelpressure]
 ==== Channel Pressure
 
 [%header,cols="1,^1,3",width="60%",grid=rows,frame=topbot]
@@ -379,6 +387,7 @@ This corresponds to a change in musical instrument on the current channel.
 | `pressure` | 1 | Pressure value (0-127)
 |===
 
+[#pitchwheel]
 ==== Pitch Wheel Change
 
 [%header,cols="1,^1,3",width="60%",grid=rows,frame=topbot]
