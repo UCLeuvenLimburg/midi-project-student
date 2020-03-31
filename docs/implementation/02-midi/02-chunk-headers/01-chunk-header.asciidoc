@@ -1,0 +1,23 @@
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :warning:
+:task-caption: 👨‍🔧
+endif::[]
+
+= `CHUNK_HEADER`
+
+As explained in the link:../../../background-information/midi.asciidoc#chunks[MIDI background information], each chunk describes itself in its header.
+
+[NOTE,caption={task-caption}]
+====
+Define the struct `CHUNK_HEADER` to store chunk header data.
+
+Keep it simple: if the documentation says the header contains two 32-bit unsigned ``int``s, you only need to create a `struct` with two `uint32_t` fields.
+====
+
+[IMPORTANT]
+====
+Rely on the `uint8_t`, `uint16_t`, `uint32_t` and `uint64_t` types to make sure your data types have the correct size.
+These are defined in the `cstdint` library header file.
+====
