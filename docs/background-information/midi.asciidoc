@@ -48,6 +48,7 @@ Note that tracks do **not** correspond to channels or instruments.
 | MTrk
 |===
 
+[#chunks]
 == Chunks
 
 Each chunk starts with a *chunk header*, which tells you which kind of chunk it is (`MThd` or `MTrk`) and how large it is.
