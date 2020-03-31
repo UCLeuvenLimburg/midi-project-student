@@ -28,11 +28,12 @@ If you're using MSVC++ (which you probably are), adding this extra supertype to 
 
 Fix this by updating the `Channel` declaration as follows:
 
-```cpp
+[source,c++]
+----
  struct __declspec(empty_bases) Channel : ...
-```
+----
 
-### Explanation
+=== Explanation
 
 This part is meant for those curious enough about how I spent an entire afternoon finding the reason why a `Channel` suddenly
 grew a byte when adding an extra empty base type.
@@ -41,29 +42,32 @@ Others can go straight for the next task.
 To understand why adding zero fields to a class through inheritance still increases the size, we must first answer the question
 "How large is an empty class?"
 
-```cpp
+[source,c++]
+----
 struct Empty { };
 
 std::cout << sizeof(Empty) << std::endl;
-```
+----
 
 While you might expect `0`, the correct answer is `1`.
 Bjarne [knows why](http://www.stroustrup.com/bs_faq2.html#sizeof-empty): to ensure different objects have different addresses.
 
 So, say we have multiple such empty types (which we actually do: `equality`, `ordered` and `show_value` have no fields and are therefore empty):
 
-```cpp
+[source,c++]
+----
 struct Empty1 { };
 struct Empty2 { };
 struct Empty3 { };
 struct Empty4 { };
-```
+----
 
 What happens if we derive a class from all four?
 
-```cpp
+[source,c++]
+----
 struct Sub : Empty1, Empty2, Empty3, Empty4 { };
-```
+----
 
 MSVC++ performs a simple addition: the size of a class is the sum of the sizes of its superclasses + its own fields.
 This gives us `1 + 1 + 1 + 1 == 4`.
