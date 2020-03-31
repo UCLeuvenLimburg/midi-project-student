@@ -11,3 +11,5 @@ endif::[]
 ====
 Define a struct `MTHD` that models an link:../../../background-information/midi.asciidoc#mthd[MThd chunk].
 ====
+
+TIP: The compiler will perform some optimizations which you actually don't want. Read up on link:../../../background-information/memory-alignment.asciidoc[memory alignment] to counteract these.
