@@ -12,7 +12,7 @@ These integers have no fixed length (the name kind of gives it away) so we canno
 
 [NOTE,caption={task-caption}]
 ====
-Write a function `ead_variable_length_integer(in)` that reads a  from the input stream `in`.
+Write a function `read_variable_length_integer(in)` that reads a  from the input stream `in`.
 ====
 
 NOTE: Some http://pvm.leone.ucll.be/topics/bit-manipulation.pdf[bit manipulation] might be necessary.
