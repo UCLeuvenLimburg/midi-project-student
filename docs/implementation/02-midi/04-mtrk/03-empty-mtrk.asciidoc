@@ -2,12 +2,51 @@
 
 We now start implementing the `read_mtrk` function with parameters
 
-* `std::istream in`, positioned at the beginning of an MTrk chunk;
-* `EventReceiver receiver`
+* `std::istream& in`, positioned at the beginning of an MTrk chunk;
+* `EventReceiver& receiver`
 
 `read_mtrk` should read MTrk event from `in`.
 For every event it finds, it should call the corresponding member function, nothing more.
 Actually doing something with the event data is left to the `EventReceiver` object (which you'll be implementing later.)
+Conceptually, `read_mtrk` could look like shown below:
+
+[source]
+----
+void midi::read_mtrk(std::istream& in, EventReceiver& receiver)
+{
+    Read chunk header
+    Check that header's id is indeed MTrk
+
+    bool end_of_track_reached = false;
+
+    while ( !end_of_track_reached )
+    {
+        event = read next event
+
+        if ( event is meta-event )
+        {
+            data = read meta-event data
+            receiver.meta(data)
+
+            if ( event is end-of-track )
+            {
+                end_of_track_reached = true
+            }
+        }
+        else if ( event is sysex )
+        {
+            data = read sysex data
+            receiver.sysex(data)
+        }
+        else if ( event is note on )
+        {
+            data = read note on data
+            receiver.note_on(data)
+        }
+        ...
+    }
+}
+----
 
 Since `read_mtrk` is a rather long function (around 70 lines in my own implementation), we'll build it up gradually.
 
@@ -54,4 +93,9 @@ assert(p == nullptr);                 <4>
 <2> At this point, `p` cannot be `nullptr`.
 <3> We need to use `std::move` to carry over ownership.
 <4> We transferred the pointer to `f`, so our `p` is now `nullptr`.
+====
+
+[NOTE,caption={task-caption}]
+====
+Implement `read_mtrk`. For now, it only needs to be able to deal with an empty MTrk.
 ====
