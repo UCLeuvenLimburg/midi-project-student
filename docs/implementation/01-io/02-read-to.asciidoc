@@ -1,5 +1,14 @@
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :warning:
+:task-caption: 👨‍🔧
+endif::[]
+
 = `read_to`
 
+[NOTE,caption={task-caption}]
+====
 Write a template function `read_to<T>` that receives
 
 * an input stream `in` of type `std::istream`;
@@ -9,7 +18,14 @@ Write a template function `read_to<T>` that receives
 
 `read_to<T>(in, buffer, n)` reads in `n` `T` values from the `in`.
 It does this by reading raw bytes from the `istream` and reinterpreting these bytes as a `n` consecutive ``T``s.
-An example of how to do this can be found in the link:../../background-information/image-example.asciidoc[background information].
+====
+
+[NOTE]
+====
+An example of how to reinterpret bytes can be found in the link:../../background-information/image-example.asciidoc[background information].
+====
+
+== Example
 
 [source,c++]
 ----
@@ -20,6 +36,8 @@ read_to(in, &data);
 ----
 
 reads 4 bytes (assuming `int` is 4 bytes long) from `in` and reinterprets these bytes as a single `int`.
+
+== Error Checking
 
 `read_to` should check whether it succeeded.
 Rely on the ``istream``'s `fail` method for this.
