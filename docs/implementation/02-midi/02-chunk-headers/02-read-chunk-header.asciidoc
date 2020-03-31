@@ -16,7 +16,6 @@ midi::CHUNK_HEADER header;
 midi::read_chunk_header(ss, &header);
 ----
 
-
 [NOTE,caption={task-caption}]
 ====
 Write a function `read_chunk_header`.
