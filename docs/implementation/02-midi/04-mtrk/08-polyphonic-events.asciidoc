@@ -9,5 +9,5 @@ endif::[]
 
 [NOTE,caption={task-caption}]
 ====
-Add support for polyphonic key pressure events to `read_mtrk`.
+Add support for link:../../../background-information/midi.asciidoc#polyphonic[polyphonic key pressure events] to `read_mtrk`.
 ====

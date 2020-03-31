@@ -9,7 +9,7 @@ endif::[]
 
 [NOTE,caption={task-caption}]
 ====
-Add support for note on events to `read_mtrk`.
+Add support for link:../../../background-information/midi.asciidoc#noteon[note on events] to `read_mtrk`.
 ====
 
 As you may remember from the link:../../../background-information/midi.asciidoc#noteonzerovelocity[MIDI background information], note on events with velocity set to 0 are equivalent to note off events.

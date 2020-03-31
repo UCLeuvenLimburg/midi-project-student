@@ -9,5 +9,5 @@ endif::[]
 
 [NOTE,caption={task-caption}]
 ====
-Add support for note off events to `read_mtrk`.
+Add support for link:../../../background-information/midi.asciidoc#noteoff[note off events] to `read_mtrk`.
 ====
