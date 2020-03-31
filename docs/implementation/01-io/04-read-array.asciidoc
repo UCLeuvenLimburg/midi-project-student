@@ -1,3 +1,10 @@
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :warning:
+:task-caption: 👨‍🔧
+endif::[]
+
 = `read_array`
 
 Just like `read` is a more user-friendly version of `read_to` for reading a single value, we'd like an easy-to-use version of `read_to` for multiple values, returning them as an array.
@@ -26,7 +33,10 @@ However, `read_array` is not interested in storing this pointer; instead, it hap
 This leaves us with `unique_ptr`.
 Remember to make use of https://en.cppreference.com/w/cpp/memory/unique_ptr/make_unique[`std::make_unique`] to heap-allocate your block of memory and give ownership to the `unique_ptr`.
 
+[NOTE,caption={task-caption}]
+====
 Write a function `read_array<T>(in, n)` that reads `n` values of type `T` from the input stream `in` and returns them as a `std::unique_ptr<T[]>`.
+====
 
 TIP: Again we urge you to make use of previously defined functions.
      `read_array` can be implemented using very little code.
