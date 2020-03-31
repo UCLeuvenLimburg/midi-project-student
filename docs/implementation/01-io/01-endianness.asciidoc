@@ -6,7 +6,7 @@ endif::[]
 
 = `switch_endianness`
 
-[NOTE,caption=⚙️]
+[NOTE,caption=👨‍🔧]
 ====
 Define the following three functions in the `io` namespace:
 
