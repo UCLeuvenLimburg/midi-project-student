@@ -7,7 +7,7 @@ endif::[]
 
 = Auxiliary Functions
 
-The goal of this series of steps is to implement `read_mtrk`, a function that reads all events in an `MTrk` chunk.
+The goal of this series of steps is to implement `read_mtrk`, a function that reads all events in an MTrk chunk.
 This is a rather long function, so it might be best to implement it gradually.
 We start off with a number of auxiliary functions.
 

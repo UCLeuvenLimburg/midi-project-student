@@ -1,0 +1,50 @@
+= Empty MTrk
+
+We now start implementing the `read_mtrk` function with parameters
+
+* `std::istream in`, positioned at the beginning of an MTrk chunk;
+* `EventReceiver receiver`
+
+`read_mtrk` should read MTrk event from `in`.
+For every event it finds, it should call the corresponding member function, nothing more.
+Actually doing something with the event data is left to the `EventReceiver` object (which you'll be implementing later.)
+
+Since `read_mtrk` is a rather long function (around 70 lines in my own implementation), we'll build it up gradually.
+
+We begin with a simple implementation of `read_mtrk` that can only process an empty MTrk chunk, that is, an MTrk with just an end-of-track event.
+In byte form, an empty MTrk looks like this:
+
+----
+M T r k                  MTrk chunk identifier
+0x00 0x00 0x00 0x04      Length of the chunk
+0x00 0xFF 0x2F x000      End-of-track event
+----
+
+The end-of-track event, as described in the link:../../../background-information/midi.asciidoc#endoftrack[MIDI background information], consists of the following bytes:
+
+* `0x00`: Delta time since last event. It makes little sense to delay this event in time.
+* `0xFF`: Identifier for meta event
+* `0x2F`: End of stream identifier
+* `0x00`: Meta event data length. An end-of-track event carries no extra data, so 0.
+
+This decomposition of the byte stream can also be found within the tests.
+
+Given this input stream, `read_mtrk` is expected to make a single call to `EventReceiver::meta` with
+
+* `dt = 0`
+* `type = 0x2F`
+* `data =` zero-length-byte[]
+* `data_size = 0`
+
+Note that `meta` expects a `std::unique_ptr<byte[]>`.
+Unique pointers can't simply be passed to functions, since that would invoke the copy constructor, and copying unique pointers defeats the purpose of them being *unique*.
+Instead, you'll need `std::move(ptr)` to explicitly carry over ownership.
+
+[source,c++]
+----
+auto p = std::make_unique<byte[]>(5);
+
+// p != nullptr
+f(std::move(p));
+// p == nullptr
+----
