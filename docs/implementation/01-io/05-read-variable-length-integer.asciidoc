@@ -1,8 +1,23 @@
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :warning:
+:task-caption: 👨‍🔧
+endif::[]
+
 = `read_variable_length_integer`
 
-Write a function `read_variable_length_integer(in)` that reads a link:../../background-information/variable-length-integers.asciidoc[variable length integer] from the input stream `in`.
+MIDI files make use of link:../../background-information/variable-length-integers.asciidoc[variable length integer].
+These integers have no fixed length (the name kind of gives it away) so we cannot rely on our previously defined functions, which all expect the size of `T` to be known at compile time.
 
-For example,
+[NOTE,caption={task-caption}]
+====
+Write a function `ead_variable_length_integer(in)` that reads a  from the input stream `in`.
+====
+
+NOTE: Some http://pvm.leone.ucll.be/topics/bit-manipulation.pdf[bit manipulation] might be necessary.
+
+== Example
 
 [source,c++]
 ----
@@ -13,5 +28,3 @@ auto value = read_variable_length_integer(in);
 ----
 
 `value` should be equal to `0b1000'0000`.
-
-TIP: Some http://pvm.leone.ucll.be/topics/bit-manipulation.pdf[bit manipulation] might be necessary.
