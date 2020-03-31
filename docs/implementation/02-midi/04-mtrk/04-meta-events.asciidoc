@@ -9,5 +9,5 @@ endif::[]
 
 [NOTE,caption={task-caption}]
 ====
-Add support for meta events to `read_mtrk`.
+Add support for link:../../../background-information/midi.asciidoc#meta[meta events] to `read_mtrk`.
 ====
