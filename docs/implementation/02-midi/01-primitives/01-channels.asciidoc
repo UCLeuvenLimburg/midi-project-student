@@ -1,4 +1,4 @@
-# Channels
+= Channels
 
 Make sure to read the texts on link:../../../background-information/strong-typedefs.md[strong typedefs]
 and link:../../../background-information/midi.md[MIDI] before starting this series of tasks.
