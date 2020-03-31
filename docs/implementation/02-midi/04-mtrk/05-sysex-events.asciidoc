@@ -1,0 +1,13 @@
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :warning:
+:task-caption: 👨‍🔧
+endif::[]
+
+= System Exclusive Events
+
+[NOTE,caption={task-caption}]
+====
+Add support for sysex events to `read_mtrk`.
+====
