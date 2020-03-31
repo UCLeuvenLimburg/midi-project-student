@@ -1,3 +1,10 @@
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :warning:
+:task-caption: 👨‍🔧
+endif::[]
+
 = Showing Channels
 
 We'd also like to be able to print out `Channel` values:
@@ -20,7 +27,7 @@ In order to force a `uint8_t` to be printed out as a decimal number, we'll have 
 For this reason, `show_value` has a second type parameter which allows you to specify which type the value should be converted to prior to printing.
 For example, `show_value<Channel, int>` will convert `value(channel)` to an `int` before sending it off to the input stream.
 
-[NOTE,caption=task]
+[NOTE,caption={task-caption}]
 ====
 Add an extra base class `show_value` to `Channel` so that printing `Channel(4)` gives us `4`.
 ====
@@ -29,11 +36,11 @@ Add an extra base class `show_value` to `Channel` so that printing `Channel(4)` 
 
 If you're using MSVC++ (which you probably are), adding this extra supertype to `Channel` will break a previously succeeding test, more specifically, the `sizeof(Channel) == 1` check.
 
-[NOTE,caption=task]
+[NOTE,caption={task-caption}]
 ====
 Fix this by https://devblogs.microsoft.com/cppblog/optimizing-the-layout-of-empty-base-classes-in-vs2015-update-2-3/[enabling the empty base class optimization] on `Channel`.
 
-Hint: it only requires a very small change.
+TIP: It only requires a very small change.
 
 You will know you fixed it when `sizeof(Channel)` equals `1` again.
 ====
