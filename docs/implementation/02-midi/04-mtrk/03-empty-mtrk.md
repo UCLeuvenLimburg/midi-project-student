@@ -3,7 +3,7 @@
 Write a function `read_mtrk` that takes a `std::istream` and
 an `EventReceiver`. The `istream` is positioned at the beginning
 of an MTrk chunk. `read_mtrk` is expected to
-go through all events in the MTrk and call the `EventReceiver`'s
+go through all events in the MTrk and call the ``EventReceiver``'s
 corresponding methods.
 
 Since `read_mtrk` is a rather long function (more than 100 lines in
