@@ -71,6 +71,7 @@ WARNING: The length does not include the header itself!
 
 Following this 8-byte header are `size` bytes that comprise the chunk data.
 
+[#mthd]
 == MThd
 
 As mentioned earlier, the `MThd` chunk always comes first in a MIDI file.
