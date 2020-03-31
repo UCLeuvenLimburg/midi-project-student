@@ -39,7 +39,10 @@ T read(std::istream& in)
 }
 ----
 
+[NOTE,caption={task-caption}]
+====
 Complete the body of this function so that `read<T>(in)` reads a single `T` from `in` and returns it.
+====
 
 TIP: Don't forget the function you just defined in the previous step.
      You might want to use it.
