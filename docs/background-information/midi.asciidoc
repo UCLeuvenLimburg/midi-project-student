@@ -248,6 +248,7 @@ You can recognize it using its type number: `0x2F`.
 It normally has no data associated with it.
 Concretely, the end of track event is encoded by the following four bytes:
 
+[#endoftrack]
 [%header,cols="1,3",width="50%",grid=rows,frame=topbot]
 |===
 | Byte | Meaning
