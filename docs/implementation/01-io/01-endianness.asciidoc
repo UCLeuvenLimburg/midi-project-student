@@ -8,7 +8,7 @@ endif::[]
 
 [NOTE,caption={task-caption}]
 ====
-Define the following three functions in the `io` namespace:
+Define the following three functions in the `io` link:../../background-information/namespace.asciidoc[namespace]:
 
 [source,c++]
 ----
