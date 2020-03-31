@@ -442,6 +442,7 @@ All events take place on channel `0`, which has been randomly chosen.
 The value for note on velocity has been chosen rather arbitrarily: Für Elise is supposed to be played very softly (pianissimo), so 30 is about one fourth of the maximum volume (127).
 The note off velocity equals 0 because, as mentioned earlier, it doesn't seem to have any effect.
 
+[#noteonzerovelocity]
 == Note On 0
 
 Often, note off events are replaced by note on events with velocity set to 0.
