@@ -23,28 +23,35 @@ M T r k                  MTrk chunk identifier
 The end-of-track event, as described in the link:../../../background-information/midi.asciidoc#endoftrack[MIDI background information], consists of the following bytes:
 
 * `0x00`: Delta time since last event. It makes little sense to delay this event in time.
-* `0xFF`: Identifier for meta event
-* `0x2F`: End of stream identifier
+* `0xFF`: Identifier for meta event.
+* `0x2F`: End of stream identifier.
 * `0x00`: Meta event data length. An end-of-track event carries no extra data, so 0.
 
-This decomposition of the byte stream can also be found within the tests.
+This byte stream can also be found in the tests.
 
 Given this input stream, `read_mtrk` is expected to make a single call to `EventReceiver::meta` with
 
 * `dt = 0`
 * `type = 0x2F`
-* `data =` zero-length-byte[]
+* `data = {}` (zero length byte array)
 * `data_size = 0`
 
-Note that `meta` expects a `std::unique_ptr<byte[]>`.
+[NOTE]
+====
+``EventReceiver``'s `meta` member function expects a `std::unique_ptr<byte[]>`.
 Unique pointers can't simply be passed to functions, since that would invoke the copy constructor, and copying unique pointers defeats the purpose of them being *unique*.
 Instead, you'll need `std::move(ptr)` to explicitly carry over ownership.
 
 [source,c++]
 ----
-auto p = std::make_unique<byte[]>(5);
+auto p = std::make_unique<byte[]>(5); <1>
 
-// p != nullptr
-f(std::move(p));
-// p == nullptr
+assert(p != nullptr); <2>
+f(std::move(p)); <3>
+assert(p == nullptr); <4>
 ----
+<1> Creates a unique pointer to a byte array of length 5.
+<2> At this point, `p` cannot be `nullptr`.
+<3> We need to use `std::move` to carry over ownership.
+<4> We transferred the pointer to `f`, so our `p` is now `nullptr`.
+====
