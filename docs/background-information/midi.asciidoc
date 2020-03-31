@@ -102,6 +102,7 @@ In practice, we can simply ignore `type` as `ntracks` contains all necessary inf
 The `division` field determines how to interpret time values.
 To deal with this correctly is a bit fastidious, so we'll simply ignore it and leave it to next year's students.
 
+[#mtrk]
 == MTrk
 
 The `MTrk` chunks are more relevant to the task at hand: here we will find the actual music data.
