@@ -1,0 +1,26 @@
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :warning:
+:task-caption: 👨‍🔧
+endif::[]
+
+= `read_chunk_header`
+
+Now that we have defined our `CHUNK_HEADER`, we can write a function to read it from a file.
+Usage would be as follows:
+
+[source,c++]
+----
+midi::CHUNK_HEADER header;
+midi::read_chunk_header(ss, &header);
+----
+
+
+[NOTE,caption={task-caption}]
+====
+Write a function `read_chunk_header`.
+Take a look at the tests to determine its parameters and return type.
+====
+
+IMPORTANT: Rely on previously defined `io` functionality to implement this function.
