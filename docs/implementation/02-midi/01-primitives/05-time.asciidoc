@@ -23,7 +23,7 @@ What *does* make sense is to add a *duration* to a date: 1/1/2000 + 1 year equal
 
 We'll allow the following operations:
 
-[%header,cols="^3,^1,^3,^1,^3",width="50%",.center]
+[%header,cols="^,^,^,^,^",width="50%",.center]
 |===
 |Left|Operator|Right| |Result
 |Duration|+|Duration|=|Duration
