@@ -402,6 +402,7 @@ This corresponds to a change in musical instrument on the current channel.
 `lower_bits` and `upper_bits` together form a 14 bit value denoteing
 the pitch wheel's position.
 
+[#example]
 == Example
 
 Let's see what Für Elise would look like. The notes are
@@ -419,7 +420,6 @@ Let's see what Für Elise would look like. The notes are
 | C | 72 | 100
 | A | 69 | 200
 |===
-
 
 In MIDI events form:
 
@@ -482,6 +482,7 @@ Using this trick, we get
 | 200 | Note On | 69 | 0 | `0x64 0x90 0x45 0x00`
 |===
 
+[#runningstatus]
 == Running Status
 
 If a MIDI event has the same status byte as the previous event, its status byte can be omitted.
