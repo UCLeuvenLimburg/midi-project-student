@@ -411,7 +411,7 @@ This means that `current_value` ceases to exist as soon as `create_counter` retu
 [%collapsible]
 .Actual results using GCC 4.9.2 (http://cpp.sh/)
 ====
-****
+=====
 Compiled with optimizations on, the above code does indeed print
 
 ----
@@ -433,7 +433,7 @@ With optimizations off, however, the following output was generated:
 The actual number printed changes each run.
 Note how the values are not increasing.
 Feel free to speculate as to why this is.
-****
+=====
 ====
 
 So, should the lambda then capture `current_value` by value?
