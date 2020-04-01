@@ -112,12 +112,14 @@ TEST_CASE("read_notes, single note with instrument 5")
         0x00, 0x01, // Number of tracks
         0x01, 0x00, // Division
         MTRK,
-        0x00, 0x00, 0x00, 12, // MTrk size
+        0x00, 0x00, 0x00, 15, // MTrk size
         0, PROGRAM_CHANGE(0, 5),
         0, NOTE_ON(0, 5, 127),
         100, NOTE_OFF(0, 5, 0),
         END_OF_TRACK
     };
+
+
     std::string data(buffer, sizeof(buffer));
     std::stringstream ss(data);
     std::vector<midi::NOTE> notes = midi::read_notes(ss);
@@ -160,7 +162,7 @@ TEST_CASE("read_notes, two notes on same track and channel, instruments 1 and 2"
         0x00, 0x01, // Number of tracks
         0x01, 0x00, // Division
         MTRK,
-        0x00, 0x00, 0x00, 20, // MTrk size
+        0x00, 0x00, 0x00, 26, // MTrk size
         0, PROGRAM_CHANGE(0, 1),
         0, NOTE_ON(0, 5, 120),
         100, NOTE_OFF(0, 5, 0),
