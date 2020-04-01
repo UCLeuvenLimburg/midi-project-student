@@ -9,5 +9,5 @@ endif::[]
 
 [NOTE,caption={task-caption}]
 ====
-Write a function `read_mthd` that reads an `MThd` chunk.
+Write a function `read_mthd` that reads an MThd chunk.
 ====
