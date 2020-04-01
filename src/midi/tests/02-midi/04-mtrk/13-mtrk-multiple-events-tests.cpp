@@ -104,7 +104,7 @@ TEST_CASE("Reading MTrk, running status with different kinds of events")
 {
     char buffer[] = {
         MTRK,
-        0x00, 0x00, 0x00, 34, // Length
+        0x00, 0x00, 0x00, 36, // Length
         10, NOTE_ON(1, 10, 55),
         0, NOTE_ON_RS(20, 66),
         0, NOTE_ON_RS(30, 77),
