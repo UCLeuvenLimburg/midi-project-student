@@ -1,0 +1,455 @@
+= Lambdas
+
+[source,c++]
+----
+int foo(bool b)
+{
+    return b ? 1 : 0;
+}
+----
+
+This is a function.
+It should be familiar to you.
+
+While you may be used to this notation, it is actually weird if you think about it.
+Compare it to how other variables are defined:
+
+[source,c++]
+----
+int x = 5;
+double y = 4.0;
+std::string s = "abc";
+----
+
+Normally, we assign values to variables using the `=` operator.
+Why don't we do the same with functions?
+
+Actually, we can!
+
+[source,c++]
+----
+#include <functional>
+
+std::function<int(bool)> foo = [](bool b) { return b ? 1 : 0; }
+----
+
+Admittedly, it has an awkward syntax.
+We won't hold it against you if you prefer the original syntax.
+However, seeing a function definition as an assignment of a function to a variable has its merits.
+For one, it makes it clear that functions are actually values just like ``bool``s, ``int``s, etc.
+
+== Function Types
+
+As mentioned before, functions are values (more precisely, *first class values*), just like `5`, `"abc"` and `true`.
+This means you can
+
+* store them in variables
+* pass them to functions
+* return them from functions
+
+Every value has a type:
+
+[%header,cols=2,width="50%"]
+|===
+| Value | Type
+| `5` | `int`
+| `1.5` | `double`
+| `true` | `bool`
+| `"abc"` | `std::string` (actually `const char*`)
+|===
+
+We need to know what the *type* of a function is.
+
+Remember what types are for: they help determine if you're interacting with them correctly.
+For example, `*` is can be applied on ``int``s, but not on ``string``s.
+This raises the question, what operations are available on functions?
+
+Just one, really: you can invoke a function using the `()` operator.
+For example, the expression `foo(true)` passes `true` to the function.
+The result of the expression is ``foo``'s return value, which in this case is `1`.
+
+The type must incorporate all information that is needed to check a function call.
+A function call is valid if
+
+* You give the right number of arguments.
+* Each of these arguments has the right type.
+* You use the return value correctly, e.g., you don't assign `x = bar()` if `bar` has a `void` return type.
+
+This means that a function's type must mention the following:
+
+* The function's parameter's types.
+* The function's return type.
+
+In C++, a function's type is written as
+
+[source,c++]
+----
+std::function<R(T1, T2, ...)>
+----
+
+where
+
+* `T1`, `T2`, ... are the parameter types.
+* `R` is the return type.
+
+[%collapsible]
+.Example
+====
+[source,c++]
+----
+#include <iostream>
+#include <functional>
+
+double foo(int x, int y)
+{
+    return x * y;
+}
+
+int main()
+{
+  std::function<double(int, int)> f = foo;
+
+  std::cout << f(2, 3);
+}
+----
+====
+
+== Functions and Objects
+
+Passing functions around as if they're regular variables is typically associated with functional programming.
+In reality, you have been doing something much more complicated already: everytime you use an object, you're actually using a bunch of functions crammed together in some kind of map.
+In other words, whenever you pass an object, you actually pass functions.
+
+A function can therefore be seen as an object with a single method:
+
+[source,c++]
+----
+bool foo(int x) { ... }
+
+// can be written as
+
+class FooFunction
+{
+    public:
+        bool apply(int x) const
+        {
+            ...
+        }
+};
+----
+
+NOTE: This is also exactly how https://docs.oracle.com/javase/8/docs/api/java/util/function/Function.html[Java 8] has introduced lambdas: objects pretending to be functions.
+Before Java 8, functions/methods weren't values: you couldn't "pick up" a method and store it in a variable.
+
+`FooFunction` should remind you of some design patterns, such as Strategy, Observer, Factory or Command.
+These patterns have in common that they "fake" functions using objects in a language that does not have support for functions-as-values.
+
+Think of ``Comparator``s in Java, which is really an instance of the Strategy design pattern.
+You can sort a list of ``String``s as follows:
+
+[source,java]
+.__Java__
+----
+ArrayList<String> strings;
+Collections.sort(strings);
+----
+
+This sorts the ``String``s using alphabetical order.
+However, say you want to order them according to length.
+The standard approach would be to define a `Comparator`:
+
+[source,java]
+.__Java__
+----
+class ByLengthComparator implements Comparator<String>
+{
+    public void compare(String s1, String s2)
+    {
+        return s1.length() - s2.length();
+    }
+}
+
+class OtherClass
+{
+    public void whatever()
+    {
+        ArrayList<String> strings;
+        Collections.sort(strings, new ByLengthComparator());
+    }
+}
+----
+
+This isn't particularly readable: we have to define a whole new class, which has to reside in a separate file, this while there is only one line of code that actually does something: `return s1.length() - s2.length();`.
+
+We can simplify this by making use of functions directly, instead of creating classes that fake them:
+
+[source,java]
+.__Java__
+----
+class OtherClass
+{
+    public void whatever()
+    {
+        ArrayList<String> strings;
+        Collections.sort(strings, OtherClass::compareStringLengths);
+    }
+
+    private static int compareStringLengths(String s1, String s2)
+    {
+        return s1.length() - s2.length();
+    }
+}
+----
+
+This way, no separate class is required, and all related code is close together.
+
+We can translate this to C++:
+
+[source,c++]
+----
+//
+// Using objects
+//
+template<typename T>
+class Comparator
+{
+public:
+    virtual int compare(const T&, const T&) const = 0;
+};
+
+class CompareStringLengths : public Comparator<std::string>
+{
+public:
+    int compare(const std::string& s1, const std::string& s2) const override
+    {
+        return int(s1.size()) - int(s2.size());
+    }
+};
+
+template<typename T>
+void sort(std::vectorT>&, const Comparator<T>&);
+
+std::vector<std::string> strings;
+sort(strings, CompareStringLengths());
+
+
+//
+// Using functions
+//
+int compareStringLengths(const std::string& s1, const std::string& s2)
+{
+    return int(s1.size()) - int(s2.size());
+}
+
+template<typename T>
+void sort(std::vectorT>&, std::function<int(const T&, const T&)>);
+
+std::vector<std::string> strings;
+sort(strings, compareStringLengths);
+----
+
+However, we can do better.
+
+== Lambdas
+
+A lambda (technically, a lambda expression) is a function without name.
+
+In the example above, we needed to define a `compareStringLengths` function.
+This can be seen as a "single-use" function: it has no use except for where we call `sort`.
+Someone reading through your code encountering `compareStringLengths` might be wondering what purpose it serves: it's only within the context of `sort` that it makes sense.
+Otherwise, it's just some strange function that subtracts string sizes from each other.
+
+Using lambdas, we can do without `compareStringLength`:
+
+[source,c++]
+----
+std::vector<std::string> strings;
+sort(strings, [](const std::string& s1, const std::string& s2) {
+    return int(s1.size()) - int(s2.size());
+} );
+----
+
+In other words, lambdas allow you to write the entire function inline, directly where you need it.
+
+The mysterious `[]` in the front of the lambda is called the *capture clause*.
+It will be discussed later.
+
+If you find this syntax, clumsy, you can still choose to define a separate function instead.
+However, lamdbas have an extra advantage, which we discuss next.
+
+== Closures
+
+Let's write code that sorts cities by how far they are away from a certain location.
+
+[source,c++]
+----
+void sort_cities(std::vector<City>& cities, const Coordinates& coordinates)
+{
+    sort(cities, [coordinates](const City& c1, const City& c2) {
+        return c1.distance_to(coordinates) - c2.distance_to(coordinates);
+    });
+}
+----
+
+Note the capture clause `[coordinates]` in the front of the lambda.
+This is a C++ specific thing (other languages that support lambdas don't have this capture clause).
+It lists all variables that are needed within the lamdba's body.
+In our case, the lambda refers to `coordinates`, which comes from outside the lambda, so we need to mention it in the capture clause.
+
+The ability to "capture" external variables such as `coordinates` is very useful.
+It is impossible to reproduce when using regular named functions: it would be outside `sort_cities` and hence would not be able to access `coordinates`.
+
+Using full blown objects will work:
+
+[source,c++]
+----
+class DistanceTo : public Comparator<std::City>
+{
+private:
+    Coordinates coordinates;
+
+public:
+    DistanceTo(const Coordinates& coordinates)
+      : coordinates(coordinates) { }
+
+    int compare(const City& c1, const City& c2) const override
+    {
+        return c1.distance_to(coordinates) - c2.distance_to(coordinates);
+    }
+};
+
+void sort_cities(std::vector<City>& cities, const Coordinates& coordinates)
+{
+    DistanceTo comparator(coordinates);
+
+    sort(cities, comparator);
+}
+----
+
+You can see that this approach involves quite a bit of boilerplate code.
+
+== Capture Clause
+
+We need to discuss one last detail about the capture clause.
+We explained that the capture clause needs to mention all variables accessed by the lambda.
+This is true, but you might wonder why the compiler can't do it on its own.
+
+And it actually can:
+
+[source,c++]
+----
+void sort_cities(std::vector<City>& cities, const Coordinates& coordinates)
+{
+    sort(cities, [=](const City& c1, const City& c2) {
+        return c1.distance_to(coordinates) - c2.distance_to(coordinates);
+    });
+}
+----
+
+The `=` tells the compiler to fill in the capture clause on its own.
+But this makes it look even more useless.
+Surely there must be a good reason for its existence?
+
+There are actually multiple of capturing variables:
+
+* By value, written `[coordinates]`: the lambda receives a *copy* of the value.
+  It is not allowed to modify this value, i.e. the captured variable is automatically `const`.
+* By reference, written `[&coordinates]`: the lambda can access the captured variable itself (i.e., not a copy.)
+
+In general, capturing by reference is the most efficient and flexible.
+
+[source,c++]
+----
+void range_call(int from, int to, std::function<void(int)> func)
+{
+    for ( int i = from; i <= to; ++i )
+    {
+        func(i);
+    }
+}
+
+std::vector<int> ns;
+range_call(1, 10, [&ns](int n) { ns.push_back(n); });
+
+// ns = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }
+----
+
+* `range_call` calls `func` with all values ranging from `from` to `to`.
+  For example, `range_call(1, 5, foo)` is equivalent with `foo(1); foo(2); foo(3); foo(4); foo(5);`
+* We use `range_call` to insert the values from `1` to `10` in `ns`.
+* Note the capture clause `[&ns]`: without the `&`, the lambda would only receive a readonly copy of `ns`, making the `push_back` calls impossible.
+
+While it may be tempting to always capture by reference, you need to watch out for dangling pointers.
+Consider the code below:
+
+[source,c++]
+----
+std::function<int()> create_counter()
+{
+    int current_value = 0;
+
+    return [&current_value]() { return current_value++; };
+}
+----
+
+We would like to be able to use `create_counter` as follows:
+
+[source,c++]
+----
+auto generate_next_id = create_counter();
+
+std::cout << generate_next_id() << std::endl; // prints 0
+std::cout << generate_next_id() << std::endl; // prints 1
+std::cout << generate_next_id() << std::endl; // prints 2
+std::cout << generate_next_id() << std::endl; // prints 3
+----
+
+Running this code might produce the expected results, but you're actually running into undefined behavior.
+The reason is that the lambda returned by `create_counter` captures `current_value` by reference, which is a *local* variable.
+This means that `current_value` ceases to exist as soon as `create_counter` returns.
+
+[%collapsible]
+.Actual results using GCC 4.9.2 (http://cpp.sh/)
+====
+****
+Compiled with optimizations on, the above code does indeed print
+
+----
+0
+1
+2
+3
+----
+
+With optimizations off, however, the following output was generated:
+
+----
+32581
+32581
+32581
+32581
+----
+
+The actual number printed changes each run.
+Note how the values are not increasing.
+Feel free to speculate as to why this is.
+****
+====
+
+So, should the lambda then capture `current_value` by value?
+This clearly wouldn't work: `current_value` would be a readonly copy, doubly useless.
+The only way to deal with this is to place `current_value` on the heap, preferably using a `shared_ptr<int>` so as to prevent memory leaks.
+
+[source,c++]
+----
+std::function<int()> create_counter()
+{
+    auto current_value = std::make_shared<int>(0);
+
+    return [current_value]() { return (*current_value)++; };
+}
+----
+
+Remark that `current_value` is captured *by value*.
+By reference is never an option here, since `current_value` is a local variable.
+By value works because a copy of a pointer still points to the same `int`.

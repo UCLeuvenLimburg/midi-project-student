@@ -8,6 +8,7 @@
 * C++ specific
 ** link:strong-typedefs.asciidoc[Strong Typedefs]
 ** link:namespace.asciidoc[Namespaces]
+** link:lambdas.asciidoc[Lambdas]
 ** link:memory-alignment.asciidoc[Memory Alignment]
 ** link:assertions.asciidoc[Assertions]
 * Visual Studio specific
