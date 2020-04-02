@@ -1,0 +1,68 @@
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :warning:
+:task-caption: 👨‍🔧
+endif::[]
+
+= `NoteCollector`
+
+MIDI supports 16 channels.
+We decided to spread out the complexity of processing MIDI events over multiple classes, i.e., `EventMulticaster` and `ChannelNoteCollector`.
+The intent is to have one `EventMulticaster` and 16 `ChannelNoteCollector` objects, which together are able to process all notes on *all* channels.
+
+Spreading out complexity is nice for the implementers, but it makes it more difficult to use by client code as it needs to deal with multiple classes.
+To remedy this, we introduce `NoteCollector`: its takes on the burden to create the 17 objects and link them together.
+In essence, it just bundles objects together and adds no functionality of its own.
+
+....
+                                  NoteCollector
+            +----------------------------------------------------------+
+            |                                                          |
+read_mtrk --|--> EventMulticaster --+--> ChannelNoteCollector(0) ---+--|---> note receiver
+            |                       |                               |  |
+            |                       +--> ChannelNoteCollector(1) ---+  |
+            |                       |                               |  |
+            |                       +--> ChannelNoteCollector(2) ---+  |
+            |                       |                               |  |
+            |                       +--> ChannelNoteCollector(3) ---+  |
+            |                       |                               |  |
+            |                       +--> ChannelNoteCollector(4) ---+  |
+            |                       |                               |  |
+            |                       +--> ChannelNoteCollector(5) ---+  |
+            |                       |                               |  |
+            |                       +--> ChannelNoteCollector(6) ---+  |
+            |                       |                               |  |
+            |                       +--> ChannelNoteCollector(7) ---+  |
+            |                       |                               |  |
+            |                       +--> ChannelNoteCollector(8) ---+  |
+            |                       |                               |  |
+            |                       +--> ChannelNoteCollector(9) ---+  |
+            |                       |                               |  |
+            |                       +--> ChannelNoteCollector(10) --+  |
+            |                       |                               |  |
+            |                       +--> ChannelNoteCollector(11) --+  |
+            |                       |                               |  |
+            |                       +--> ChannelNoteCollector(12) --+  |
+            |                       |                               |  |
+            |                       +--> ChannelNoteCollector(13) --+  |
+            |                       |                               |  |
+            |                       +--> ChannelNoteCollector(14) --+  |
+            |                       |                               |  |
+            |                       +--> ChannelNoteCollector(15) --+  |
+            |                                                          |
+            +----------------------------------------------------------+
+....
+
+
+[NOTE,caption={task-caption}]
+====
+Implement `NoteCollector`.
+
+* It is a subclass of `EventReceiver`.
+* Its constructor takes a `NoteReceiver`, same as in a link:02-channel-note-collector.asciidoc#notereceiver[previous step].
+* Internally, it creates 16 ``ChannelNoteCollector``s.
+  Each `ChannelNoteCollector` is given the `NoteReceiver`.
+  Next, the ``ChannelNoteCollector``s are used to initialize an `EventMulticaster`.
+* The event handling function members should all simply forward the event data to the ``EventMulticaster``'s corresponding member function.
+====
