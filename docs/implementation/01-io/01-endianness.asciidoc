@@ -1,6 +1,6 @@
-:tip-caption: :bulb:
-:note-caption: :information_source:
-:important-caption: :warning:
+:tip-caption: 💡
+:note-caption: ℹ️
+:important-caption: ⚠️
 :task-caption: 👨‍🔧
 
 = `switch_endianness`
