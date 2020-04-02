@@ -4,6 +4,7 @@
 :task-caption: 👨‍🔧
 :source-highlighter: rouge
 :toc: left
+:toclevels: 3
 
 = Binary File Example
 
@@ -220,7 +221,9 @@ in.read(reinterpret_cast<char*>(&header), sizeof(HEADER));
 uint64_t npixels = header.width * header.height;
 ----
 
-== Pixels
+== Pixel Data
+
+We are now ready to read the actual image data.
 
 === Defining the Pixel Types
 

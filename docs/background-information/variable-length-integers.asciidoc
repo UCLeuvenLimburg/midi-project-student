@@ -4,6 +4,7 @@
 :task-caption: 👨‍🔧
 :source-highlighter: rouge
 :toc: left
+:toclevels: 3
 
 = Variable Length Integers
 
