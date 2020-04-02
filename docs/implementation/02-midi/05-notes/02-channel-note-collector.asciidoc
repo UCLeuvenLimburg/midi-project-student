@@ -8,6 +8,8 @@
 
 = `ChannelNoteCollector`
 
+== Goal
+
 In the previous step, you defined a `NOTE` data structure which contains all information that defines a note.
 In order to visualize the music, we would like to have a nice list of `NOTE` objects.
 However, while a MIDI file does indeed contain this information, it does so in a somewhat indirect manner: instead of a list of notes, it encodes them as note on and note off events.
