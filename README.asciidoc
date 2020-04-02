@@ -25,7 +25,17 @@ This includes
   Include the corresponding tests, create the necessary files and write code.
   Only proceed to the next step when everything compiles and all tests pass.
 
-== Important Links
+[NOTE]
+====
+The documentation is written in the AsciiDoc format.
+The easiest way to read it is by browsing to the `.asciidoc` file using GitHub's website.
+
+If you wish to view them offline, you can use https://asciidoctor.org/[AsciiDoctor] to convert them to HTML files.
+After installing AsciiDocter, run `generate-html-docs.sh`.
+This script translates all `.asciidoc` files to `.html`, written under the `html` directory.
+====
+
+== Links
 
 * link:{url-setup}[Setup Instructions]
 * link:{url-background}[Background Information]
