@@ -17,6 +17,7 @@ Find.find('docs') do |entry|
         :task-caption: 👨‍🔧
         :source-highlighter: rouge
         :toc: left
+        :toclevels: 3
 
         END
         IO.write(entry, contents)
