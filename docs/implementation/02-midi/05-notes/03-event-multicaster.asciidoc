@@ -17,6 +17,11 @@ At each event X, it iterates over the vector and calls each ``EventReceiver``'s 
 [NOTE,caption={task-caption}]
 ====
 Write the `EventMulticaster` class.
+
+* Make it a subclass of `EventReceiver`.
+* Write its constructor.
+* Implement all the member functions required by `EventReceiver`.
+  All methods operate similary, so this might involve some copy pasting.
 ====
 
 [NOTE]
