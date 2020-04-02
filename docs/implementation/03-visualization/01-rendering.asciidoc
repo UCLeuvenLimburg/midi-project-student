@@ -1,3 +1,8 @@
+:tip-caption: 💡
+:note-caption: ℹ️
+:important-caption: ⚠️
+:task-caption: 👨‍🔧
+
 = Rendering
 
 IMPORTANT: In this last steps, you will generate a bunch of .bmp files, which can amount to multiple GBs of data. Do *not* dare add these to your repo.

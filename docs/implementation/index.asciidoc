@@ -1,3 +1,8 @@
+:tip-caption: 💡
+:note-caption: ℹ️
+:important-caption: ⚠️
+:task-caption: 👨‍🔧
+
 = Implementation
 
 This folder contains step-by-step instructions of how to implement your MIDI project.

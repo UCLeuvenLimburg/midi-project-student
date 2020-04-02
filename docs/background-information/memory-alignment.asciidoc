@@ -1,3 +1,8 @@
+:tip-caption: 💡
+:note-caption: ℹ️
+:important-caption: ⚠️
+:task-caption: 👨‍🔧
+
 = Memory Alignment
 
 Reading and writing memory does not happen on a byte-per-byte basis.

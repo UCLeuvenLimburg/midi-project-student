@@ -1,9 +1,7 @@
-ifdef::env-github[]
-:tip-caption: :bulb:
-:note-caption: :information_source:
-:important-caption: :warning:
+:tip-caption: 💡
+:note-caption: ℹ️
+:important-caption: ⚠️
 :task-caption: 👨‍🔧
-endif::[]
 
 = `read_array`
 

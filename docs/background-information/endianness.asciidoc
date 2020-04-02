@@ -1,3 +1,8 @@
+:tip-caption: 💡
+:note-caption: ℹ️
+:important-caption: ⚠️
+:task-caption: 👨‍🔧
+
 = Endianness
 
 The decimal notation of the number twelve is `12`: the digits are ordered from most to least significant.
