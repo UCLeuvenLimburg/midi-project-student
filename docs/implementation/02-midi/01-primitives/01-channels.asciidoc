@@ -5,8 +5,8 @@
 
 = Channels
 
-TIP: Make sure to read the texts on link:../../../background-information/strong-typedefs.md[strong typedefs]
-and link:../../../background-information/midi.md[MIDI] before starting this series of tasks.
+TIP: Make sure to read the texts on <<../../../background-information/strong-typedefs.md#,strong typedefs>>
+and <<../../../background-information/midi.md#,MIDI>> before starting this series of tasks.
 `tagged`, `equality` and `ordered` have already been defined for you in `util/tagged.h`.
 
 We start of this series by defining a new type for channels.

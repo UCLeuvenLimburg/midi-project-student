@@ -47,7 +47,7 @@ It does this by reading raw bytes from the `istream` and reinterpreting these by
 
 [NOTE]
 ====
-An example of how to reinterpret bytes can be found in the link:../../background-information/image-example.asciidoc[background information].
+An example of how to reinterpret bytes can be found in the <<../../background-information/image-example.asciidoc#,background information>>.
 ====
 
 == Error Checking
@@ -61,7 +61,7 @@ It is therefore strongly advised to perform some rror checking.
 Hence, `read_to` should check whether the read operation succeeded.
 Rely on the ``istream``'s http://www.cplusplus.com/reference/ios/ios/fail/[`fail` method] for this.
 If the read operation failed, simply crash the application.
-You can achieve this by making use of an link:../../background-information/assertions.asciidoc[assertion].
+You can achieve this by making use of an <<../../background-information/assertions.asciidoc#,assertion>>.
 For this project, you can make use of `CHECK`:
 
 [source,c++]

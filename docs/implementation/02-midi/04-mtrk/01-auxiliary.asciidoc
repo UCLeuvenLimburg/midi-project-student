@@ -11,7 +11,7 @@ We start off with a number of auxiliary functions.
 
 == Event Type Identification
 
-As described in the link:../../../background-information/midi.asciidoc#mtrk[MIDI explanations], there are different kinds of events:
+As described in the <<../../../background-information/midi.asciidoc#mtrk,MIDI explanations>>, there are different kinds of events:
 
 * System exclusive events
 * Meta events

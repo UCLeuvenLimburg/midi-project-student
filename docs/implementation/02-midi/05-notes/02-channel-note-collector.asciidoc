@@ -9,7 +9,7 @@ In the previous step, you defined a `NOTE` data structure which contains all inf
 In order to visualize the music, we would like to have a nice list of `NOTE` objects.
 However, while a MIDI file does indeed contain this information, it does so in a somewhat indirect manner: instead of a list of notes, it encodes them as note on and note off events.
 It will therefore be necessary to find pairs of these events, each defining a single note.
-An example of the correspondence between notes and events can be found in link:../../../background-information/midi.asciidoc#example[the MIDI background information].
+An example of the correspondence between notes and events can be found in <<../../../background-information/midi.asciidoc#example,the MIDI background information>>.
 
 It is important to know when a note on and note off event both form a pair.
 
@@ -17,7 +17,7 @@ It is important to know when a note on and note off event both form a pair.
 * Both events mention the same note.
 
 A note also has an instrument associated with it.
-Instruments are encoded as link:../../../background-information/midi.asciidoc#programchange[program change events].
+Instruments are encoded as <<../../../background-information/midi.asciidoc#programchange,program change events>>.
 This means that in order to reconstruct note data from midi events, you need to keep an eye on three types of events:
 
 * Note on
@@ -199,7 +199,7 @@ ToVector receiver(&notes);
 ChannelNoteCollector collector(Channel(5), receiver);
 ----
 
-We can shorten this dramatically by relying on link:../../../background-information/lambdas.asciidoc[lambdas]:
+We can shorten this dramatically by relying on <<../../../background-information/lambdas.asciidoc#,lambdas>>:
 
 [source,c++]
 ----
@@ -232,7 +232,7 @@ The only remaining thing to do is implement each event-handling member function.
 * You are mostly interested in dealing with note on, note off and program change/
 * Don't forget to check if the events take place on the correct channel.
 * `note_on` should register the note's starting time and velocity.
-* `note_on` should check the velocity: if it is link:../../../background-information/midi.asciidoc#noteonzerovelocity[zero], you should interpret it as a note off event.
+* `note_on` should check the velocity: if it is <<../../../background-information/midi.asciidoc#noteonzerovelocity,zero>>, you should interpret it as a note off event.
 * `note_off` should look up the information stored by note_on and create a `NOTE`.
 * Make sure to keep it efficient.
   Store the data in the right data structure.

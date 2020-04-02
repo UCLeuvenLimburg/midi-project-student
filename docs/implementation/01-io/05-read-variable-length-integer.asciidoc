@@ -5,7 +5,7 @@
 
 = `read_variable_length_integer`
 
-MIDI files rely on link:../../background-information/variable-length-integers.asciidoc[variable length integers].
+MIDI files rely on <<../../background-information/variable-length-integers.asciidoc#,variable length integers>>.
 These integers have no fixed length (the name kind of gives it away) so we cannot rely on our previously defined functions, which all expect the size of `T` to be known at compile time.
 
 [NOTE,caption={task-caption}]

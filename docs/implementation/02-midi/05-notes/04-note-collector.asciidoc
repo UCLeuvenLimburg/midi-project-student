@@ -58,7 +58,7 @@ read_mtrk --|--> EventMulticaster --+--> ChannelNoteCollector(0) ---+--|---> not
 Implement `NoteCollector`.
 
 * It is a subclass of `EventReceiver`.
-* Its constructor takes a `NoteReceiver`, same as in a link:02-channel-note-collector.asciidoc#notereceiver[previous step].
+* Its constructor takes a `NoteReceiver`, same as in a <<02-channel-note-collector.asciidoc#notereceiver,previous step>>.
 * Internally, it creates 16 ``ChannelNoteCollector``s.
   Each `ChannelNoteCollector` is given the `NoteReceiver`.
   Next, the ``ChannelNoteCollector``s are used to initialize an `EventMulticaster`.

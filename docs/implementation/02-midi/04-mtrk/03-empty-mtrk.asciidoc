@@ -64,7 +64,7 @@ M T r k                  MTrk chunk identifier
 0x00 0xFF 0x2F x000      End-of-track event
 ----
 
-The end-of-track event, as described in the link:../../../background-information/midi.asciidoc#endoftrack[MIDI background information], consists of the following bytes:
+The end-of-track event, as described in the <<../../../background-information/midi.asciidoc#endoftrack,MIDI background information>>, consists of the following bytes:
 
 * `0x00`: Delta time since last event. It makes little sense to delay this event in time.
 * `0xFF`: Identifier for meta event.

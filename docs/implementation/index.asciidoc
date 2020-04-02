@@ -7,9 +7,9 @@
 
 This folder contains step-by-step instructions of how to implement your MIDI project.
 
-* link:01-io/[General IO functionality]
-* link:02-midi/[Reading MIDI files]
-* link:03-visualization/[Rendering MIDI files]
+* <<01-io/#,General IO functionality>>
+* <<02-midi/#,Reading MIDI files>>
+* <<03-visualization/#,Rendering MIDI files>>
 
 == Tests
 

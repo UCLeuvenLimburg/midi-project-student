@@ -5,18 +5,18 @@
 
 = Background Information
 
-* link:image-example.asciidoc[Image Format Example]
+* <<image-example.asciidoc#,Image Format Example>>
 * MIDI
-** link:midi.asciidoc[MIDI File Format]
-** link:endianness.asciidoc[Endianness]
-** link:variable-length-integers.asciidoc[Variable Length Integers]
+** <<midi.asciidoc#,MIDI File Format>>
+** <<endianness.asciidoc#,Endianness>>
+** <<variable-length-integers.asciidoc#,Variable Length Integers>>
 * C++ specific
-** link:strong-typedefs.asciidoc[Strong Typedefs]
-** link:namespace.asciidoc[Namespaces]
-** link:lambdas.asciidoc[Lambdas]
-** link:memory-alignment.asciidoc[Memory Alignment]
-** link:assertions.asciidoc[Assertions]
+** <<strong-typedefs.asciidoc#,Strong Typedefs>>
+** <<namespace.asciidoc#,Namespaces>>
+** <<lambdas.asciidoc#,Lambdas>>
+** <<memory-alignment.asciidoc#,Memory Alignment>>
+** <<assertions.asciidoc#,Assertions>>
 * Visual Studio specific
-** link:debugger-visualizers.asciidoc[Debugger Visualizers]
-* link:inversion-of-control.asciidoc[Inversion of Control]
-* link:command-line-parser.asciidoc[Command Line Parser]
+** <<debugger-visualizers.asciidoc#,Debugger Visualizers>>
+* <<inversion-of-control.asciidoc#,Inversion of Control>>
+* <<command-line-parser.asciidoc#,Command Line Parser>>

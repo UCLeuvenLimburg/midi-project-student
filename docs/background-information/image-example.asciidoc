@@ -117,7 +117,7 @@ static_assert(offsetof(HEADER, pixel_format) == 8, "HEADER::pixel_format has inc
 ----
 
 The compiler now complains about the header size: instead of the expected 9 bytes, it is 12 bytes long.
-This is due to link:./memory-alignment.asciidoc[memory alignment]: for efficiency reasons, the compiler pads the struct to make its size a multiple of 4.
+This is due to <<./memory-alignment.asciidoc#,memory alignment>>: for efficiency reasons, the compiler pads the struct to make its size a multiple of 4.
 How can we tell the compiler not to do this?
 
 To prevent padding, you can use the `#pragma pack`:
@@ -241,7 +241,7 @@ struct ARGB
 };
 ----
 
-There's no need for `#pragma pack` directives since the link:./memory-alignment.asciidoc[default memory layout] has no padding.
+There's no need for `#pragma pack` directives since the <<./memory-alignment.asciidoc#,default memory layout>> has no padding.
 
 ## Reading the Pixels
 

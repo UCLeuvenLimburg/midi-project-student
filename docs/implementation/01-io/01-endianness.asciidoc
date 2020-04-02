@@ -5,12 +5,12 @@
 
 = `switch_endianness`
 
-MIDI files are link:../../background-information/endianness.asciidoc[big endian], whereas your machine is *very* probably little endian.
+MIDI files are <<../../background-information/endianness.asciidoc#,big endian>>, whereas your machine is *very* probably little endian.
 We need a way to translate between both.
 
 [NOTE,caption={task-caption}]
 ====
-Define the following three functions in the `io` link:../../background-information/namespace.asciidoc[namespace]:
+Define the following three functions in the `io` <<../../background-information/namespace.asciidoc#,namespace>>:
 
 [source,c++]
 ----

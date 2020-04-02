@@ -9,7 +9,7 @@ While debugging you can view your variable's value.
 Visual Studio will try its best to show you relevant information, but there are times where being defining our own visualization rules would improve readability.
 This is where https://docs.microsoft.com/en-us/visualstudio/debugger/create-custom-views-of-native-objects?view=vs-2017#BKMK_Expressions_and_formatting[debugger visualizers] come in.
 
-For example, say we define a new type age (see for example link:./strong-typedefs.md[strong typedefs]):
+For example, say we define a new type age (see for example <<./strong-typedefs.md#,strong typedefs>>):
 
 [source,c++]
 ----

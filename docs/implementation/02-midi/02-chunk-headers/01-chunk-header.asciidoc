@@ -5,7 +5,7 @@
 
 = `CHUNK_HEADER`
 
-As explained in the link:../../../background-information/midi.asciidoc#chunks[MIDI background information], each chunk describes itself in its header.
+As explained in the <<../../../background-information/midi.asciidoc#chunks,MIDI background information>>, each chunk describes itself in its header.
 We now define a C++ data structure that mirrors this structure exactly.
 For example, say the documentation states the chunk header contains three 32-bit unsigned integers, you should define the struct as
 
