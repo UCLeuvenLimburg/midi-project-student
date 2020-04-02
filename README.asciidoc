@@ -1,6 +1,6 @@
 :url-setup: docs/setup.asciidoc
-:url-background: docs/background-information
-:url-implementation: docs/implementation
+:url-background: docs/background-information/index.asciidoc
+:url-implementation: docs/implementation/index.asciidoc
 
 # MIDI Project
 
