@@ -1,0 +1,28 @@
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :warning:
+:task-caption: 👨‍🔧
+endif::[]
+
+= `read_notes`
+
+This step is the culmination of all previous ones: you'll read an entire MIDI file and return a list of all notes contained within in.
+
+[NOTE,caption={task-caption}]
+====
+Write the function `read_notes` with signature
+
+[source,c++]
+----
+std::vector<NOTE> midi::read_notes(std::istream& in)
+----
+
+* The given `istream` contains the entire MIDI file.
+* It extract the notes and returns an `std::vector<NOTE>`.
+* It starts by reading an MThd chunk, from which it learns how many MTrks there are.
+* Next, it proceeds to read all these MTrks chunks and collects all notes in a vector.
+* This vector is ultimately returned.
+
+This function should be easy to implement: all complexity has already been taken care of in earlier steps.
+====
