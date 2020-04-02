@@ -464,3 +464,8 @@ std::function<int()> create_counter()
 Remark that `current_value` is captured *by value*.
 By reference is never an option here, since `current_value` is a local variable.
 By value works because a copy of a pointer still points to the same `int`.
+
+== More Information
+
+* https://en.cppreference.com/w/cpp/language/lambda[Official C++ documentation]
+* https://docs.microsoft.com/en-us/cpp/cpp/lambda-expressions-in-cpp?view=vs-2019[MSDN documentation]
