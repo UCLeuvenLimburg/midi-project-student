@@ -8,6 +8,8 @@
 
 = Showing Channels
 
+== Goal
+
 We'd also like to be able to print out `Channel` values:
 
 [source,c++]
