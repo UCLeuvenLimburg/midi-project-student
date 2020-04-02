@@ -2,8 +2,12 @@
 :note-caption: ℹ️
 :important-caption: ⚠️
 :task-caption: 👨‍🔧
+:source-highlighter: rouge
+:toc: left
 
 = Lambdas
+
+:toc: left
 
 [source,c++]
 ----
@@ -54,7 +58,7 @@ This means you can
 
 Every value has a type:
 
-[%header,cols=2,width="50%"]
+[%header,cols="1,3",width="50%"]
 |===
 | Value | Type
 | `5` | `int`
@@ -97,6 +101,7 @@ where
 * `T1`, `T2`, ... are the parameter types.
 * `R` is the return type.
 
+=====
 [%collapsible]
 .Example
 ====
@@ -118,6 +123,7 @@ int main()
 }
 ----
 ====
+=====
 
 == Functions and Objects
 
@@ -413,10 +419,10 @@ Running this code might produce the expected results, but you're actually runnin
 The reason is that the lambda returned by `create_counter` captures `current_value` by reference, which is a *local* variable.
 This means that `current_value` ceases to exist as soon as `create_counter` returns.
 
+=====
 [%collapsible]
 .Actual results using GCC 4.9.2 (http://cpp.sh/)
 ====
-=====
 Compiled with optimizations on, the above code does indeed print
 
 ----
@@ -438,8 +444,8 @@ With optimizations off, however, the following output was generated:
 The actual number printed changes each run.
 Note how the values are not increasing.
 Feel free to speculate as to why this is.
-=====
 ====
+=====
 
 So, should the lambda then capture `current_value` by value?
 This clearly wouldn't work: `current_value` would be a readonly copy, doubly useless.

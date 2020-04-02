@@ -2,6 +2,8 @@
 :note-caption: ℹ️
 :important-caption: ⚠️
 :task-caption: 👨‍🔧
+:source-highlighter: rouge
+:toc: left
 
 = Binary File Example
 
@@ -40,7 +42,7 @@ In our experience, only compression formats (e.g. zip) actually operate on the l
 So, even though we only need 2 bits, we'll use a full byte for the pixel format.
 This results in the following header:
 
-[%header,colors=2*,width="1"]
+[%header,cols="<3,^1",width="20%"]
 |===
 |Field|Size
 
@@ -54,7 +56,7 @@ This results in the following header:
 We need to choose a pixel format representation: there are 256 possible values, only 3 will mean something.
 Let's use the following mapping:
 
-[%header,colors=2*,width="1"]
+[%header,cols="^1,<3",width="20%"]
 |===
 |Value|Pixel Format
 
