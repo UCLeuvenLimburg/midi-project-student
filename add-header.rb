@@ -15,6 +15,8 @@ Find.find('docs') do |entry|
         :note-caption: ℹ️
         :important-caption: ⚠️
         :task-caption: 👨‍🔧
+        :source-highlighter: rouge
+        :toc: left
 
         END
         IO.write(entry, contents)
