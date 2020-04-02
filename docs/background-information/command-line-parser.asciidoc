@@ -7,8 +7,6 @@
 
 = Command Line Parser
 
-== Example Usage
-
 A quick example of how to use the `CommandLineParser` class:
 
 [source,c++]
