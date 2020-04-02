@@ -1,8 +1,7 @@
-ifdef::env-github[]
 :tip-caption: :bulb:
 :note-caption: :information_source:
 :important-caption: :warning:
-endif::[]
+:task-caption: 👨‍🔧
 
 = `switch_endianness`
 
