@@ -154,6 +154,7 @@ In other words, the constructor should have a `Channel` parameter.
 * Have it accept a `Channel`, which it stores in a field.
 ====
 
+[#notereceiver]
 === Receiving Notes
 
 Where does the collector send its `NOTE`s to?
