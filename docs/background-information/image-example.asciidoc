@@ -74,10 +74,10 @@ We start with the first row of pixels, followed by the second row, etc.
 There are `height` rows, and each row is `width * pixel_format` bytes long.
 Therefore, the image itself consumes `width * height * pixel_format` bytes.
 
-== Reading
-
 Given a file following the earlier specification, we will read it in two phases.
 First, we read in the header and based on the information encoded within it, we read the rest of the file.
+
+== Bitmap Header
 
 === Defining the Header
 
@@ -146,7 +146,7 @@ Normally, this is a dangerous thing to rely on, but fortunately, we have our `st
 * Either `#pragma pack` works and everything's fine, or
 * It doesn't work, silently fails, but our `static_assert`s will catch this and generate a compiler error.
 
-== Reading the Header
+=== Reading the Header
 
 We can open a file as follows:
 
@@ -220,7 +220,9 @@ in.read(reinterpret_cast<char*>(&header), sizeof(HEADER));
 uint64_t npixels = header.width * header.height;
 ----
 
-== Defining the Pixel Types
+== Pixels
+
+=== Defining the Pixel Types
 
 We support three kinds of pixel formats, so we define
 three corresponding pixel types:
@@ -245,7 +247,7 @@ struct ARGB
 
 There's no need for `#pragma pack` directives since the <<./memory-alignment.asciidoc#,default memory layout>> has no padding.
 
-## Reading the Pixels
+=== Reading the Pixels
 
 We prepare our buffer. Its size can be determined using `header`:
 
