@@ -8,6 +8,8 @@
 
 = `read_to`
 
+== Goal
+
 We want a function that allows us to easily read data of any type from binary files. For example,
 
 [source,c++]
