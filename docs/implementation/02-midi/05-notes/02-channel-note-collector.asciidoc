@@ -7,8 +7,6 @@ endif::[]
 
 = `ChannelNoteCollector`
 
-:toc:
-
 In the previous step, you defined a `NOTE` data structure which contains all information that defines a note.
 In order to visualize the music, we would like to have a nice list of `NOTE` objects.
 However, while a MIDI file does indeed contain this information, it does so in a somewhat indirect manner: instead of a list of notes, it encodes them as note on and note off events.
@@ -202,7 +200,7 @@ ToVector receiver(&notes);
 ChannelNoteCollector collector(Channel(5), receiver);
 ----
 
-We can shorten this dramatically by relying on lambdas:
+We can shorten this dramatically by relying on link:../../../background-information/lambdas.asciidoc[lambdas]:
 
 [source,c++]
 ----
@@ -211,35 +209,8 @@ ChannelNoteCollector collector(Channel(5),
                                [&notes](const NOTE& note) { notes.push_back(note); });
 ----
 
-Let's examine this lambda in detail.
-A lambda is nothing more than a nameless function, meaning it has parameters, a body and a return value.
-
-* `[&notes]` is the *capture clause* and lists all variables the lambda will refer to inside its body.
-   In our case we need access to `notes`, hence it being mentioned in the capture clause.
-* `notes` is preceeded by an `&` in the capture clause.
-  This expresses we want the lambda to work with `notes` by reference.
-  Without the `&`, the lambda would receive `notes` by value, i.e., a copy of the vector.
-  All the `push_back` operations would be applied to this copy, and `notes` would remain unchanged, making it entire process useless.
-* `(const NOTE& note)` is the lambda's parameter list: it receives a `NOTE` object.
-* `{ notes.push_back(note); }` is the body of the lambda: it adds the given `NOTE` object to `notes`.
-* The lambda does not return anything: in our context, it would have no point.
-
-The advantage of using a lambda is that it is able to directly access variables around it.
-Using classes, we need to manually pass around pointers (e.g. giving it to the constructor which then stores it in a field) in order to provide similar functionality.
-
 So, what does this mean for our `ChannelNoteCollector`?
 Its constructor needs a second parameter: a function which it calls whenever a new note has been found
-
-In order to be able to add this parameter, we need to know how to express its type.
-The syntax for a function type is:
-
-[source,c++]
-----
-#include <functional>
-
-std::function<ReturnType(ParameterType1, ParameterType2, ...) identifier;
-----
-
 In our case, the function needs to accept a `const NOTE&` and return nothing:
 
 [source,c++]
@@ -248,16 +219,6 @@ std::function<void(const NOTE&)> note_receiver
 ----
 
 You can simply pass a function by value (no need to use references or pointers).
-Calling the function is done using the familiar syntax:
-
-[source,c++]
-----
-void foo(std::function<void(const NOTE&)> note_receiver)
-{
-    NOTE note = ...;
-    note_receiver(note);
-}
-----
 
 [NOTE,caption={task-caption}]
 ====
@@ -265,17 +226,22 @@ Add the second parameter to ``ChannelNoteCollector``'s constructor.
 As usual, the constructor should store this parameter's value in a field.
 ====
 
-=== Implementation
+=== Handling the Events
+
+The only remaining thing to do is implement each event-handling member function.
+
+* You are mostly interested in dealing with note on, note off and program change/
+* Don't forget to check if the events take place on the correct channel.
+* `note_on` should register the note's starting time and velocity.
+* `note_on` should check the velocity: if it is link:../../../background-information/midi.asciidoc#noteonzerovelocity[zero], you should interpret it as a note off event.
+* `note_off` should look up the information stored by note_on and create a `NOTE`.
+* Make sure to keep it efficient.
+  Store the data in the right data structure.
+  No loops are necessary: it is just a matter of looking up the information in the right place.
+* Don't forget to deal with the other events appropriately!
+  The corresponding member functions definitely should *not* be empty.
 
 [NOTE,caption={task-caption}]
 ====
-To summarize:
-
-* Define a `EventReceiver` subclass named `ChannelNoteCollector`.
-* Give it a constructor taking a channel and a function.
-* Implement all event-receiving member functions.
-* Keep track of instrument changes and notes.
-* Each time a note has been found, call the provided function.
+Implement each of ``ChannelNoteCollector``'s member functions.
 ====
-
-IMPORTANT: Do not ignore the other events!
