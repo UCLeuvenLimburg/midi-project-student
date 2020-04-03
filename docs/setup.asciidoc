@@ -8,7 +8,56 @@
 
 = Setup
 
-== Creating Your Very Own Fork
+== Temporary GitHub Classroomless Setup Instructions
+
+NOTE: These instructions are a workaround my GitHub related problems.
+
+=== Cloning the Repository
+
+Clone the repository with the following command.
+
+[source,bash]
+----
+$ git clone https://github.com/UCLeuvenLimburg/midi-project-student.git midi-project
+----
+
+[NOTE]
+====
+You will *not* be able to push, as you don't have the necessary rights.
+
+Adding and committing are possible and are highly encouraged.
+====
+
+IMPORTANT: I will not recognize the existence of whomever downloads the code as a zip.
+
+Later, I'll add instructions of how to redirect this repository to your own fork.
+Don't worry: this will be a painless process as it takes only one command.
+After that, you'll be able to push your code to sweet GitHub safety.
+
+=== Pulling Updates
+
+You may not be able to push, but you sure still can pull.
+I strongly suggest watching the repository (done through the GitHub webinterface) so that you receive emails whenever I make modifications.
+
+To pull in updates:
+
+[source,bash]
+----
+$ git pull
+----
+
+Note that you may have to add/commit your own changes first.
+Pulling is safe: Git will never overwrite your uncommited code.
+If my update makes changes to any of your uncommitted files, Git will simply refuse to pull.
+
+NOTE: These instructions are only valid as long as you don't have your own fork.
+When my GitHub mishap is solved, you will have to follow slightly different instructions.
+
+== GitHub Classroomfull Instructions
+
+IMPORTANT: Students of 19-20: Ignore this section. Go straight to the <<#ide,IDE configuration section>>.
+
+=== Creating Your Very Own Fork
 
 Go to the GitHub Classroom link provided to you (see Toledo) and accept the assignment.
 This creates a new fork (i.e. a copy) of the Git repository under your account.
@@ -32,7 +81,7 @@ It is *known* that strange things tend to happen to the laptops of those who dar
 IMPORTANT: Also, **do not clone your repository into a DropBox/OneDrive/Google Drive managed directory**.
 This makes no sense whatsoever and can cause serious problems.
 
-== Receiving Updates
+=== Receiving Updates
 
 On the https://github.com/UCLeuvenLimburg/midi-project-student[main repository's website], click the Watch button in order to receive notifications about updates.
 These can include
@@ -49,7 +98,10 @@ When updates are made, you can pull them as follows (note that you should first 
 $ git pull upstream master
 ```
 
-== Visual Studio
+[#ide]
+== IDE
+
+=== Visual Studio
 
 * Use `midi.sln` solution file to open your project in Visual Studio.
 * Select "Show All Files" in the Solution Explorer so as to view the folder structure.
@@ -60,7 +112,7 @@ $ git pull upstream master
 ** To run your own `main` function, select either Debug or Release and press kbd:[Ctrl+F5] or kbd:[F5] (to enable debugging).
    During development, you'll probably want to use the former.
 
-== Manual Configuration
+=== GCC/Clang
 
 This section is meant for those not using Visual Studio.
 Make the following configuration settings:
