@@ -8,7 +8,7 @@
 
 = `switch_endianness`
 
-MIDI files are <<../../background-information/endianness.asciidoc#,big endian>>, whereas your machine is *very* probably little endian.
+MIDI files are <<../../background-information/endianness.asciidoc#,big endian>> (also, see http://pvm.leone.ucll.be/topics/endianness.pdf[slides]), whereas your machine is *very* probably little endian.
 We need a way to translate between both.
 
 [NOTE,caption={task-caption}]
