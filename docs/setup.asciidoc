@@ -49,8 +49,6 @@ Continue to <<#updates,this section>>.
 [#github]
 == For Those Starting From Nothing
 
-IMPORTANT: Students of 19-20: Ignore this section. Go straight to the <<#ide,IDE configuration section>>.
-
 === Step 1: Creating Your Own Fork
 
 Go to the GitHub Classroom link provided to you (see Toledo) and accept the assignment.
