@@ -8,95 +8,135 @@
 
 = Setup
 
-== Temporary GitHub Classroomless Setup Instructions
+Please read these instructions carefully, as matters have been complicated a bit by some GitHub related issues.
 
-NOTE: These instructions are a workaround my GitHub related problems.
+. If you were anxious to get started on this project and cloned my repository (i.e. and have not yet created a fork through GitHub Classroom), follow <<#clone, these instructions>>.
+. If you have done nothing yet: follow <<#github, these instructions>>.
 
-=== Cloning the Repository
 
-Clone the repository with the following command.
+[#clone]
+== For Those Who Cloned The Repository
 
-[source,bash]
-----
-$ git clone https://github.com/UCLeuvenLimburg/midi-project-student.git midi-project
-----
+This section assumes you have cloned https://github.com/UCLeuvenLimburg/midi-project-student.git to your local machine.
 
-[NOTE]
-====
-You will *not* be able to push, as you don't have the necessary rights.
+=== Step 1: Creating your Own Fork
 
-Adding and committing are possible and are highly encouraged.
-====
+First, go create your fork on GitHub Classroom.
+The link is available on Toledo.
+This takes a little while, but you can proceed with the next step as soon as you know your fork's URL.
 
-IMPORTANT: I will not recognize the existence of whomever downloads the code as a zip.
+=== Step 2: Changing `origin`
 
-Later, I'll add instructions of how to redirect this repository to your own fork.
-Don't worry: this will be a painless process as it takes only one command.
-After that, you'll be able to push your code to sweet GitHub safety.
-
-=== Pulling Updates
-
-You may not be able to push, but you sure still can pull.
-I strongly suggest watching the repository (done through the GitHub webinterface) so that you receive emails whenever I make modifications.
-
-To pull in updates:
+Open Git Bash in the project's directory.
+Let `origin` refer to your fork:
 
 [source,bash]
 ----
-$ git pull
+$ git remote set-url origin URL
 ----
 
-Note that you may have to add/commit your own changes first.
-Pulling is safe: Git will never overwrite your uncommited code.
-If my update makes changes to any of your uncommitted files, Git will simply refuse to pull.
+where URL should the replaced by the actual URL of your repository.
 
-NOTE: These instructions are only valid as long as you don't have your own fork.
-When my GitHub mishap is solved, you will have to follow slightly different instructions.
+IMPORTANT: As always with bash commands, omit the `$`.
 
-== GitHub Classroomfull Instructions
+[source,bash]
+----
+$ git remote add upstream https://github.com/UCLeuvenLimburg/midi-project-student
+----
+
+Continue to <<#updates,this section>>.
+
+[#github]
+== For Those Starting From Nothing
 
 IMPORTANT: Students of 19-20: Ignore this section. Go straight to the <<#ide,IDE configuration section>>.
 
-=== Creating Your Very Own Fork
+=== Step 1: Creating Your Own Fork
 
 Go to the GitHub Classroom link provided to you (see Toledo) and accept the assignment.
 This creates a new fork (i.e. a copy) of the Git repository under your account.
 
+Forking takes a little while for some reason.
+Unfortunately, you have to wait until it is finished before proceeding.
+
+=== Step 2: Clone Your Fork
+
 Clone this fresh repository using the following command, replacing `URL` by the url of your fork.
 
-```bash
-# Clone your repo
+[source,bash]
+----
 $ git clone URL midi-project
+----
 
-# Enter the repository
-$ cd midi-project
-
-# Add upstream remote
-$ git remote add upstream https://github.com/UCLeuvenLimburg/midi-project-student
-```
-
-IMPORTANT: **Do not dare downloading the code as a zip.**
-It is *known* that strange things tend to happen to the laptops of those who dare violate this rule.
+If you were impatient and didn't wait for the forking process to end, your local repository will be empty.
+If this happened, delete the directory and clone again.
 
 IMPORTANT: Also, **do not clone your repository into a DropBox/OneDrive/Google Drive managed directory**.
 This makes no sense whatsoever and can cause serious problems.
 
-=== Receiving Updates
+[#updates]
+== Receiving Updates
 
-On the https://github.com/UCLeuvenLimburg/midi-project-student[main repository's website], click the Watch button in order to receive notifications about updates.
+Sometimes, I make updates to my repository.
 These can include
 
 * Clarifications
 * Extra tests
 * Bug fixes
+* A completely different assignment two days before the deadline
 
-It is therefore crucial for you to keep up to date.
+I promise to try to refrain from doing the last one listed, but still, it is crucial for your repository to be kept up to date.
 
-When updates are made, you can pull them as follows (note that you should first commit/stash all your changes, otherwise Git might complain):
+Below are the instructions of how to pull in updates I made to *my* repository into *your* repository.
 
-```bash
+IMPORTANT: It is *your* responsibility to keep up to date.
+Failure to do so might have a detrimental effect on your grade.
+
+=== Step 1: Watching the Repository
+
+On the https://github.com/UCLeuvenLimburg/midi-project-student[my repository's website], click the Watch button in order to receive notifications about updates.
+
+=== Step 2: Adding Upstream
+
+Add a second remote named `upstream` that refers to my repository.
+
+[source,bash]
+----
+$ git remote add upstream https://github.com/UCLeuvenLimburg/midi-project-student
+----
+
+=== Step 3: Verification
+
+Enter the command on the first line.
+The following lines should more or less correspond to the output you get.
+
+[source,bash]
+----
+$ git remote -v
+origin  YOUR-FORKS-URL (fetch)
+origin  YOUR-FORKS-URL (push)
+upstream  https://github.com:UCLeuvenLimburg/midi-project-student.git (fetch)
+upstream  https://github.com:UCLeuvenLimburg/midi-project-student.git (push)
+----
+
+If you think something went wrong, please contact me.
+
+=== Updating
+
+NOTE: Repeat this step every time you update.
+
+Make sure you added and committed your changes, otherwise Git might refuse to pull in the update.
+
+[source,bash]
+----
 $ git pull upstream master
-```
+----
+
+IMPORTANT: Read the output to check for errors.
+In the past, some people didn't bother to check and never actually updated.
+
+IMPORTANT: Make sure you check for merge conflicts.
+I do my very best to avoid these, but some are very hard/impossible to avoid.
 
 [#ide]
 == IDE
