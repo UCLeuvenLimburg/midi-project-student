@@ -18,8 +18,10 @@ Find.find('docs') do |entry|
         :source-highlighter: rouge
         :toc: left
         :toclevels: 3
-
+        :experimental:
+        :nofooter:
         END
+
         IO.write(entry, contents)
     end
 end

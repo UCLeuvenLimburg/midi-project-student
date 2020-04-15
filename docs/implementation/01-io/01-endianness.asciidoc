@@ -5,6 +5,8 @@
 :source-highlighter: rouge
 :toc: left
 :toclevels: 3
+:experimental:
+:nofooter:
 
 = `switch_endianness`
 
@@ -31,4 +33,9 @@ Note that the tests expect you to name these files a certain way, so go take a l
 [NOTE]
 ====
 In order to shift bytes around, you should rely on http://pvm.leone.ucll.be/topics/bit-manipulation.pdf[bit manipulation operators] such as `&`, `|`, `<<` and `>>`.
+====
+
+[NOTE]
+====
+If you have problems running the tests, remember to follow the instructions laid out on the <<../../setup.asciidoc#ide,setup page>>.
 ====

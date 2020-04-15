@@ -5,6 +5,8 @@
 :source-highlighter: rouge
 :toc: left
 :toclevels: 3
+:experimental:
+:nofooter:
 
 = `NOTE`
 
