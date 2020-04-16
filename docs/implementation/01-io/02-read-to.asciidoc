@@ -38,7 +38,6 @@ read_to(in, data, 5);
 reads 20 bytes (again, assuming `int` is 4 bytes long).
 These 5 values are stored in the array `data`.
 
-
 [NOTE,caption={task-caption}]
 ====
 Write a template function `read_to<T>` that receives
