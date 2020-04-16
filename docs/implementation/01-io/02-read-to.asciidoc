@@ -57,6 +57,19 @@ It does this by reading raw bytes from the `istream` and reinterpreting these by
 An example of how to reinterpret bytes can be found in the <<../../background-information/image-example.asciidoc#,background information>>.
 ====
 
+[NOTE]
+====
+Make sure to look up the details of how to define templated functions.
+There are some fundamental differences with how regular (non-templated) functions are defined.
+====
+
+[NOTE]
+====
+If you have trouble solving this task, remember: baby steps.
+Focus on making everything compile first.
+Only then move on to implementing the actual functionality and making the tests pass.
+====
+
 == Error Checking
 
 Reading from an invalid `in` is possible and won't crash.
