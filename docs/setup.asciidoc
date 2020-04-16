@@ -152,6 +152,12 @@ I do my very best to avoid these, but some are very hard/impossible to avoid.
 ** To run your own `main` function, select either Debug or Release and press kbd:[Ctrl+F5] or kbd:[F5] (to enable debugging).
    During development, you'll probably want to use the former.
 
+[IMPORTANT]
+====
+The file `tests.cpp` must be included in your project.
+Without it, you will get a series of intimidating linker errors.
+====
+
 === GCC/Clang
 
 This section is meant for those not using Visual Studio.
