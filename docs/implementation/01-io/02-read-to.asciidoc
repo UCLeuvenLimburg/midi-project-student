@@ -48,8 +48,8 @@ Write a template function `read_to<T>` that receives
 * a value `n` of type `size_t` (which is basically an unsigned integer).
   Its default value is `1`.
 
-`read_to<T>(in, buffer, n)` reads in `n` `T` values from the `in`.
-It does this by reading raw bytes from the `istream` and reinterpreting these bytes as a `n` consecutive ``T``s.
+`read_to<T>(in, buffer, n)` https://lmgtfy.com/?q=c%2B%2B+istream+read+bytes[reads] in `n` `T` values from the `in`.
+It does this by reading https://lmgtfy.com/?q=c%2B%2B+find+out+size+of+type[the correct number] of raw bytes from the `istream` and reinterpreting these bytes as a `n` consecutive ``T``s.
 ====
 
 [NOTE]
@@ -57,7 +57,7 @@ It does this by reading raw bytes from the `istream` and reinterpreting these by
 An example of how to reinterpret bytes can be found in the <<../../background-information/image-example.asciidoc#,background information>>.
 ====
 
-[NOTE]
+[IMPORTANT]
 ====
 Make sure to look up the details of how to define templated functions.
 There are some fundamental differences with how regular (non-templated) functions are defined.
