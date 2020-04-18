@@ -17,9 +17,39 @@ TEST_CASE("Reading variable sized integer from { 0x00 }")
     CATCH_CHECK(actual == 0);
 }
 
+TEST_CASE("Reading variable sized integer from { 0x00, 0x00 }")
+{
+    char buffer[] = { 0x00, 0x00 };
+    std::string data(buffer, sizeof(buffer));
+    std::stringstream ss(data);
+    auto actual = io::read_variable_length_integer(ss);
+
+    CATCH_CHECK(actual == 0);
+}
+
+TEST_CASE("Reading variable sized integer from { 0x00, 0x00, 0x10, 0xFF, 0x00 }")
+{
+    char buffer[] = { 0x00, 0x00, 0x10, char(0xFF), 0x00 };
+    std::string data(buffer, sizeof(buffer));
+    std::stringstream ss(data);
+    auto actual = io::read_variable_length_integer(ss);
+
+    CATCH_CHECK(actual == 0);
+}
+
 TEST_CASE("Reading variable sized integer from { 0x01 }")
 {
     char buffer[] = { 0x01 };
+    std::string data(buffer, sizeof(buffer));
+    std::stringstream ss(data);
+    auto actual = io::read_variable_length_integer(ss);
+
+    CATCH_CHECK(actual == 1);
+}
+
+TEST_CASE("Reading variable sized integer from { 0x01, 0x10 }")
+{
+    char buffer[] = { 0x01, 0x10 };
     std::string data(buffer, sizeof(buffer));
     std::stringstream ss(data);
     auto actual = io::read_variable_length_integer(ss);
