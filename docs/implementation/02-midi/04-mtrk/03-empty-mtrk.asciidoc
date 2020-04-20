@@ -66,7 +66,7 @@ In byte form, an empty MTrk looks like this:
 ----
 M T r k                  MTrk chunk identifier
 0x00 0x00 0x00 0x04      Length of the chunk
-0x00 0xFF 0x2F x000      End-of-track event
+0x00 0xFF 0x2F 0x00      End-of-track event
 ----
 
 The end-of-track event, as described in the <<../../../background-information/midi.asciidoc#endoftrack,MIDI background information>>, consists of the following bytes:
