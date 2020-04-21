@@ -178,7 +178,7 @@ One way would be to introduce the concept of a note receiver, which could be def
 class NoteReciever
 {
 public:
-    virtual receive_note(const NOTE&) = 0;
+    virtual void receive_note(const NOTE&) = 0;
 };
 ----
 
