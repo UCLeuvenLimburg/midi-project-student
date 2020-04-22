@@ -494,7 +494,7 @@ It also makes sense to say one `Height` is greater or smaller than another, mean
 This can be achieved as follows:
 
 ```c++
-struct Height : tagged<double, Height>, ordered<Height> { using tagged:tagged; };
+struct Height : tagged<double, Height>, ordered<Height> { using tagged::tagged; };
 ```
 
 This single line of code gives us the following:
