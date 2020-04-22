@@ -175,7 +175,7 @@ One way would be to introduce the concept of a note receiver, which could be def
 
 [source,c++]
 ----
-class NoteReciever
+class NoteReceiver
 {
 public:
     virtual void receive_note(const NOTE&) = 0;
