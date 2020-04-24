@@ -35,7 +35,7 @@ The *nicer* way is to convert the `.asciidoc` files to `.html` files.
 This allows you to view the documentation offline.
 The formatting is also nicer (and can be tweaked if you want, which is a luxury GitHub does not offer.)
 You can use https://asciidoctor.org/[AsciiDoctor] to convert the documentation to HTML.
-After installing AsciiDocter, run `generate-html-docs.sh`.
+After installing AsciiDoctor, run `generate-html-docs.sh`.
 
 == Links
 
