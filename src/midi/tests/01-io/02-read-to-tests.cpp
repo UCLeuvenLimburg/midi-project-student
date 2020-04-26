@@ -86,4 +86,17 @@ TEST_CASE("read_to<uint_16> from { 0x11, 0x22, 0x33, 0x44 } with n == 2")
     CATCH_CHECK(result[1] == 0x4433);
 }
 
+TEST_CASE("read_to<uint_8> twice in a row from { 1, 2 } with n == 1")
+{
+    uint8_t result1, result2;
+    char buffer[] = { 0x1, 0x2 };
+    std::string data(buffer, sizeof(buffer));
+    std::stringstream ss(data);
+
+    io::read_to(ss, &result1, 1);
+    io::read_to(ss, &result2, 1);
+    CATCH_CHECK(int(result1) == 0x1);
+    CATCH_CHECK(int(result2) == 0x2);
+}
+
 #endif
