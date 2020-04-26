@@ -20,6 +20,9 @@ These integers have no fixed length (the name kind of gives it away) so we canno
 Write a function `read_variable_length_integer(in)` that reads a  from the input stream `in`.
 ====
 
+IMPORTANT: You defined a series of helper functions in earlier steps.
+Save them from an existential depression by actually making use of them.
+
 NOTE: Some http://pvm.leone.ucll.be/topics/bit-manipulation.pdf[bit manipulation] might be necessary.
 
 == Example
@@ -33,3 +36,18 @@ auto value = read_variable_length_integer(in);
 ----
 
 `value` should be equal to `0b1000'0000`.
+
+== Implementation
+
+* Read one byte.
+* Check if its most significant bit (MSB) it set.
+* If so, you need to read another byte. Repeat this process as long as the MSB is 1.
+* Each byte you read contributes 7 bits to the final result. You need to extract these 7 bits and add them to some accumulator variable.
+
+If you have trouble with this step, take it very slowly and focus on each substep.
+You can experiment in Python or JavaScript interactively if you wish, since the bitwise operators are the same.
+Do not hesitate to write helper functions and write some tests for them.
+
+* `is_msb_set(uint8_t)` checks if the MSB is set.
+* `unset_msb(uint8_t)` sets the MSB to 0, leaving the other 7 bits unmodified.
+* `accumulate(uint64_t acc, uint8_t b)` appends the 7 LSBs of `b` to `acc`.
