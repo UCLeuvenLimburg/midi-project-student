@@ -84,4 +84,23 @@ TEST_CASE("Reading CHUNK_HEADER { 'M', 'T', 'r', 'k', 0x45, 0x12, 0x75, 0x66 }")
     }
 }
 
+TEST_CASE("Checking that read_chunk_header does not read too much data")
+{
+    char buffer[] = { 'M', 'T', 'h', 'd', 0, 0, 0, 0, 5, 2, 3, 1 };
+    std::string data(buffer, sizeof(buffer));
+    std::stringstream ss(data);
+    midi::CHUNK_HEADER header;
+    midi::read_chunk_header(ss, &header);
+
+    char c;
+    ss >> c;
+    CATCH_REQUIRE(c == 5);
+    ss >> c;
+    CATCH_REQUIRE(c == 2);
+    ss >> c;
+    CATCH_REQUIRE(c == 3);
+    ss >> c;
+    CATCH_REQUIRE(c == 1);
+}
+
 #endif
