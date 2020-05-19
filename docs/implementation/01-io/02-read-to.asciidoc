@@ -100,5 +100,5 @@ Hardly elegant, but good enough for our purposes.
 [IMPORTANT]
 ====
 We strongly recommend you use `CHECK` as often as you can, so as to catch errors as soon as possible.
-It'll simply debugging considerably.
+It'll simplify debugging considerably.
 ====
