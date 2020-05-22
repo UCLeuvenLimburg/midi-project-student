@@ -235,7 +235,8 @@ TEST_CASE("ChannelNoteCollector does not ignore other events on other channels")
     CATCH_CHECK(notes[0] == midi::NOTE(midi::NoteNumber(5), midi::Time(100), midi::Duration(100), 112, midi::Instrument(0)));
 }
 
-TEST_CASE("Two consecutive note on (with velocity != 0) events (because some MIDI files are malformed): pretend there's a note off event just before the second note on")
+// Because some MIDI files are malformed: pretend there's a note off event just before the second note on
+TEST_CASE("Two consecutive note on (with velocity != 0) events")
 {
     std::vector<midi::NOTE> notes;
     midi::ChannelNoteCollector collector(midi::Channel(0), [&notes](const midi::NOTE& note) { notes.push_back(note); });
