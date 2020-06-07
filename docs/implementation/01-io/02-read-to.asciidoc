@@ -75,7 +75,7 @@ Reading from an invalid `in` is possible and won't crash.
 Execution will simply proceed with the wrong values and some other unrelated part of the application will crash.
 You definitely don't want this.
 Instead, you want to fail fast, i.e., you want to be notified as soon as the error presents itself.
-It is therefore strongly advised to perform some rror checking.
+It is therefore strongly advised to perform some error checking.
 
 Hence, `read_to` should check whether the read operation succeeded.
 Rely on the ``istream``'s http://www.cplusplus.com/reference/ios/ios/fail/[`fail` method] for this.
