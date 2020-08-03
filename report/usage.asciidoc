@@ -1,0 +1,19 @@
+= Report
+
+Edit the file `report.json`. The file should contain valid json and contain the following information:
+
+* `github-url`: refers to your GitHub repository. It should start with `https://` (which is the default), not with `git@` (if you communicate with GitHub through SSH).
+* `first-name`: your first name, preferably without accents.
+* `last-name`: your last name, preferably without accents.
+* `student-id`: your r-number.
+* `end-result`: optional. Remove it if you have no end result to share, i.e., don't leave in the TODO.
+
+To check the validity of your `report.json`, run the provided `check-report.py` script:
+
+[source,bash]
+----
+$ python check-report.py report.json
+----
+
+Only submit a report for which the checking script prints out a clear success message.
+Since I rely on scripts to parse your reports, failure to send in a valid report might lead to an NA.
