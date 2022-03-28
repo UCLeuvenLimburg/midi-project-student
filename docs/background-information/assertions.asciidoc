@@ -151,7 +151,7 @@ Luckily, assertions can be turned off. In C++, this is done using macros:
 ----
 
 In other words, assertions will automatically be removed if you compile in release build.
-The `assert` macro makes part of C++'s standard library and can be cound in `assert.h`.
+The `assert` macro makes part of C++'s standard library and can be found in `assert.h`.
 
 Most other programming languages have no support for macros, but provide assertions some other way.
 
