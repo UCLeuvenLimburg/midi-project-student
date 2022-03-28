@@ -159,7 +159,7 @@ Most other programming languages have no support for macros, but provide asserti
 .Assertions in Java
 ====
 =====
-For example, Java sports the `assert` keyword:
+For example, Java has the `assert` keyword:
 
 [code,java]
 ----
